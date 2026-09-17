@@ -27,13 +27,13 @@ Se instala OpenCode y se configuran modelos gratuitos. La herramienta es un ejem
 
 ## Jornada 1: contexto, harness y GDD
 
-### 0:00 a 0:20 | Qué hace un agente
+### Qué hace un agente
 
 **Objetivo:** distinguir modelo, LLM, token, proveedor, agente, herramienta, contexto y evidencia.
 
 Presentar que una salida plausible no equivale a una verificación. El agente ayuda a explorar, planificar, cambiar y comprobar, pero no decide por el equipo.
 
-### 0:20 a 0:40 | SDD mínimo
+### SDD mínimo
 
 **Objetivo:** entender cómo una idea se transforma en un cambio verificable.
 
@@ -43,7 +43,7 @@ GDD o idea -> spec -> plan -> cambio -> evidencia -> decisión humana
 
 El GDD explica por qué existe el juego y qué experiencia busca. La spec acota un cambio concreto y observable.
 
-### 0:40 a 1:05 | Preparar el proyecto
+### Preparar el proyecto
 
 **Objetivo:** instalar el harness sin sobrescribir archivos por sorpresa.
 
@@ -63,7 +63,7 @@ Al finalizar, reconocer estos archivos:
 | `docs/game/gdd-breve.md` | Punto de partida si no existe un GDD. |
 | `.agent-ready/workshop/` | Checklist y guía de la práctica. |
 
-### 1:05 a 1:35 | Definir la idea
+### Definir la idea
 
 **Objetivo:** registrar una visión suficiente para orientar el primer cambio.
 
@@ -77,7 +77,7 @@ Cada estudiante completa o adapta:
 
 **Resultado:** una idea de juego o GDD breve disponible para consulta.
 
-### 1:35 a 2:00 | Explorar antes de cambiar
+### Explorar antes de cambiar
 
 **Objetivo:** obtener evidencia del proyecto antes de proponer una implementación.
 
@@ -87,7 +87,7 @@ Pedir al agente que inspeccione el repositorio en modo lectura. Debe informar es
 
 ## Jornada 2: alinear, especificar y verificar
 
-### 0:00 a 0:25 | Relación entre GDD y specs
+### Relación entre GDD y specs
 
 **Objetivo:** separar la visión del juego de una unidad de trabajo implementable.
 
@@ -99,7 +99,7 @@ npx create-agent-ready-unraf . --level=sdd --add=gdd-to-sdd
 
 La skill no crea specs automáticamente. Hace preguntas y detecta diferencias entre el GDD y las specs existentes.
 
-### 0:25 a 0:55 | Primera spec
+### Primera spec
 
 **Objetivo:** acordar qué se hará, qué no y cómo se demostrará el resultado.
 
@@ -112,7 +112,7 @@ Elegir un cambio pequeño: movimiento básico, condición de derrota, interacci�
 
 **Gate humano:** la persona aprueba la spec antes de pedir implementación.
 
-### 0:55 a 1:20 | Plan técnico
+### Plan técnico
 
 **Objetivo:** decidir el camino de implementación a partir del repositorio real.
 
@@ -120,7 +120,7 @@ El agente inspecciona el proyecto y propone archivos, símbolos, pasos, verifica
 
 **Gate humano:** aprobar, ajustar o rechazar el plan.
 
-### 1:20 a 1:45 | Cambio y evidencia
+### Cambio y evidencia
 
 **Objetivo:** implementar sólo el cambio aprobado y demostrar su estado.
 
@@ -128,7 +128,7 @@ Implementar el alcance acordado, revisar el diff, ejecutar la verificación disp
 
 **Gate humano:** aceptar el resultado o volver a la spec y al plan.
 
-### 1:45 a 2:00 | Cierre
+### Cierre
 
 Responder:
 
