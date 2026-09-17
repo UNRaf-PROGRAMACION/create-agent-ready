@@ -10,13 +10,13 @@
 
 [Repositorio](https://github.com/UNRaf-PROGRAMACION/create-agent-ready) | [Reportar un problema](https://github.com/UNRaf-PROGRAMACION/create-agent-ready/issues)
 
-## Qué hace
+## 🧭 Qué hace
 
 `create-agent-ready-unraf` prepara un proyecto que ya existe para trabajar con agentes de programación de forma observable. Agrega un harness mínimo: contexto persistente, plantillas para definir cambios pequeños y un registro que protege archivos propios del proyecto.
 
 El CLI no crea un juego, no modifica gameplay ni instala dependencias en el proyecto objetivo por defecto. Tampoco reemplaza decisiones de producto, revisión humana ni verificación: las personas definen la intención, el alcance y la evidencia aceptable.
 
-## El ciclo de trabajo
+## 🔁 El ciclo de trabajo
 
 ```text
 contexto -> spec -> plan -> cambio pequeño -> verificación -> evidencia -> decisión humana
@@ -24,7 +24,7 @@ contexto -> spec -> plan -> cambio pequeño -> verificación -> evidencia -> dec
 
 El CLI prepara la estructura para sostener este ciclo. La persona sigue siendo responsable de revisar el repositorio, aprobar la spec, decidir el plan y evaluar el resultado.
 
-## Inicio rápido
+## ⚡ Inicio rápido
 
 Desde la raíz de un proyecto existente, revisá primero qué archivos se escribirían y aplicá el cambio sólo después de inspeccionarlo:
 
@@ -33,9 +33,12 @@ npx create-agent-ready-unraf . --level=sdd --dry-run
 npx create-agent-ready-unraf . --level=sdd
 ```
 
+> [!IMPORTANT]
+> Revisá primero el resultado de `--dry-run`. Aplicá cambios sólo después de inspeccionar los archivos propuestos.
+
 El nivel `sdd` agrega `AGENTS.md`, `.sdd/` y otros archivos de apoyo para definir cambios pequeños, planificarlos y registrar evidencia.
 
-## Elegí un nivel
+## 🧩 Elegí un nivel
 
 | Nivel | Elegilo si necesitás | Agrega |
 | --- | --- | --- |
@@ -51,7 +54,7 @@ npx create-agent-ready-unraf . --level=sdd-pro
 
 Consultá la [referencia rápida del CLI](docs/03-referencia-cli.md) para conocer todas las opciones y ejemplos.
 
-## Qué agrega al proyecto
+## 📦 Qué agrega al proyecto
 
 | Ruta | Propósito |
 | --- | --- |
@@ -62,7 +65,7 @@ Consultá la [referencia rápida del CLI](docs/03-referencia-cli.md) para conoce
 
 El método es independiente del proveedor, modelo o motor de juegos. OpenCode se usa como ejemplo en el workshop, pero no es un requisito del proceso.
 
-## Complementos
+## 🧰 Complementos
 
 ### Workshop de videojuegos
 
@@ -92,7 +95,7 @@ npx create-agent-ready-unraf . --skills=discover
 npx create-agent-ready-unraf . --skills=install
 ```
 
-## Uso seguro
+## 🛡️ Uso seguro
 
 ```bash
 # Revisar los archivos que se escribirían.
@@ -105,11 +108,15 @@ npx create-agent-ready-unraf . --doctor
 npx create-agent-ready-unraf . --level=sdd --force
 ```
 
-> **Atención:** `--force` no permite reemplazar archivos propios del proyecto. Sólo actualiza rutas registradas previamente en `.agent-ready/manifest.json`.
+> [!WARNING]
+> `--force` no permite reemplazar archivos propios del proyecto. Sólo actualiza rutas registradas previamente en `.agent-ready/manifest.json`.
 
-Antes de aceptar un cambio, inspeccioná el diff, ejecutá las verificaciones disponibles y registrá las limitaciones. Nunca incluyas claves, datos personales o material sin autorización en el contexto compartido con un agente.
+Antes de aceptar un cambio, inspeccioná el diff, ejecutá las verificaciones disponibles y registrá las limitaciones.
 
-## Documentación
+> [!CAUTION]
+> Nunca incluyas claves, datos personales o material sin autorización en el contexto compartido con un agente.
+
+## 📚 Documentación
 
 **[Abrí las guías en línea ->](https://unraf-programacion.github.io/create-agent-ready/)**
 
@@ -121,13 +128,13 @@ Seguí esta ruta para entender el método y aplicarlo a un proyecto:
 
 Los Markdown se mantienen en el repositorio como fuente de contenido y para facilitar contribuciones.
 
-## Uso académico responsable
+## 🎓 Uso académico responsable
 
 El estudiante debe poder explicar la intención, el proceso y la evidencia de su trabajo. Se debe declarar asistencia de IA cuando la institución lo requiera. No se deben compartir claves, datos personales, material con licencia incompatible ni repositorios privados sin autorización.
 
 El agente puede ayudar a producir; no sustituye la comprensión ni la evaluación. Para ampliar estos criterios, consultá el [marco conceptual](docs/01-marco-conceptual.md).
 
-## Desarrollo
+## 🔧 Desarrollo
 
 Se requiere Node.js 18 o superior.
 
@@ -139,7 +146,7 @@ npm run pack:check
 
 `npm run check` valida el CLI, sus pruebas y el build de documentación. `npm run pack:check` confirma qué archivos entrarán al paquete publicado en npm.
 
-## Proyecto
+## 🤝 Proyecto
 
 - [Cómo contribuir](CONTRIBUTING.md)
 - [Política de seguridad](SECURITY.md)

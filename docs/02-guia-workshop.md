@@ -6,11 +6,12 @@ audience: Estudiantes de Videojuegos UNRAF
 
 # Workshop: del GDD a una spec y un cambio verificable
 
+> [!TIP]
 > **Resultado esperado:** terminar con un proyecto preparado para trabajar con agentes, una primera spec aprobada y un plan técnico basado en evidencia del repositorio.
 
 [Inicio](../README.md) | [Marco conceptual](01-marco-conceptual.md) | [Referencia del CLI](03-referencia-cli.md)
 
-## Antes de empezar
+## ✅ Antes de empezar
 
 ### Necesitás
 
@@ -23,9 +24,10 @@ audience: Estudiantes de Videojuegos UNRAF
 
 Se instala OpenCode y se configuran modelos gratuitos. La herramienta es un ejemplo: el método sigue siendo aplicable a otros agentes.
 
-> **Recordatorio:** no se autoriza código hasta haber inspeccionado el repositorio y aprobado una spec con alcance acotado.
+> [!IMPORTANT]
+> No se autoriza código hasta haber inspeccionado el repositorio y aprobado una spec con alcance acotado.
 
-## Jornada 1: contexto, harness y GDD
+## 🧭 Jornada 1: contexto, harness y GDD
 
 ### Qué hace un agente
 
@@ -85,7 +87,7 @@ Pedir al agente que inspeccione el repositorio en modo lectura. Debe informar es
 
 **Resultado:** información comprobable para decidir el alcance de la primera spec.
 
-## Jornada 2: alinear, especificar y verificar
+## 🛠️ Jornada 2: alinear, especificar y verificar
 
 ### Relación entre GDD y specs
 
@@ -137,15 +139,16 @@ Responder:
 3. ¿Qué debería actualizarse: GDD, spec o ambos?
 4. ¿Qué decisión siguió siendo humana?
 
-## Opcional: proveedores y seguridad
+## 🛡️ Opcional: proveedores y seguridad
 
 OpenCode puede conectarse a distintos proveedores y modelos. Para pasar de modelos gratuitos a opciones pagas, seguir la documentación vigente de OpenCode y del proveedor elegido.
 
-> **Nunca** copiar una API key en `AGENTS.md`, una spec, un commit, una captura o un chat compartido. Usar variables de entorno o el mecanismo seguro recomendado por la herramienta.
+> [!CAUTION]
+> Nunca copies una API key en `AGENTS.md`, una spec, un commit, una captura o un chat compartido. Usá variables de entorno o el mecanismo seguro recomendado por la herramienta.
 
 Antes de elegir un proveedor pago, revisar modelo, límites, costo por token, privacidad y política institucional.
 
-## Opcional: skills posteriores
+## 🧩 Opcional: skills posteriores
 
 AutoSkills puede sugerir skills según la tecnología del proyecto:
 
@@ -161,6 +164,6 @@ npx create-agent-ready-unraf . --skills=install
 
 Skill Creator se presenta como un recurso posterior para crear o mejorar una skill local cuando el equipo detecta una tarea repetitiva. El objetivo del workshop es construir software, no producir skills.
 
-## Siguiente lectura
+## ➡️ Siguiente lectura
 
 Consultá la [referencia rápida del CLI](03-referencia-cli.md) durante la práctica para revisar opciones, requisitos y ejemplos.

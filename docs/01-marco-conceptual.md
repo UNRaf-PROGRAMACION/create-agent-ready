@@ -6,17 +6,18 @@ audiencia: Estudiantes de Videojuegos UNRAF y otras áreas de desarrollo
 
 # Desarrollo guiado por agentes
 
+> [!NOTE]
 > **En esta guía:** qué hace un agente, cómo usar SDD para acotar cambios y qué decisiones siguen siendo humanas.
 
 [Inicio](../README.md) | [Guía del workshop](02-guia-workshop.md) | [Referencia del CLI](03-referencia-cli.md)
 
-## Propósito
+## 🎯 Propósito
 
 El desarrollo guiado por agentes usa modelos de lenguaje y herramientas de programación para acelerar exploración, planificación, cambios y verificación. No transfiere la responsabilidad: la persona define la intención, los límites, los criterios de aceptación y las decisiones de riesgo.
 
 Este marco sirve para videojuegos, web, datos, móviles o software de escritorio. En el workshop, OpenCode es la herramienta demostrada; el método no depende de ella.
 
-## El ciclo de trabajo
+## 🔁 El ciclo de trabajo
 
 Un agente puede leer archivos, buscar símbolos, proponer planes, editar código y ejecutar herramientas. Su resultado no es una garantía: puede inferir mal, desconocer una convención local o afirmar algo que no verificó.
 
@@ -28,7 +29,10 @@ contexto -> spec -> plan -> cambio pequeño -> verificación -> evidencia -> dec
 
 El agente acelera trabajo bajo restricciones. La autoridad sobre el producto, el repositorio y la publicación sigue siendo humana.
 
-## Conceptos esenciales
+> [!IMPORTANT]
+> El agente puede proponer o ejecutar tareas, pero la decisión sobre el producto y la aceptación del resultado siguen siendo humanas.
+
+## 🧠 Conceptos esenciales
 
 | Término | Definición operativa |
 | --- | --- |
@@ -48,7 +52,7 @@ El agente acelera trabajo bajo restricciones. La autoridad sobre el producto, el
 | Evidencia | Resultado observable: test, build, captura, log o revisión manual. |
 | Gate humano | Punto de decisión donde una persona aprueba, ajusta o detiene el trabajo. |
 
-## SDD: definir antes de implementar
+## 📐 SDD: definir antes de implementar
 
 Spec-Driven Development comienza por hacer explícito el cambio deseado antes de pedir implementación. Una spec útil responde:
 
@@ -62,7 +66,7 @@ La spec no es un documento largo ni una promesa de que el agente ya entendió to
 
 En videojuegos, el GDD conserva la visión general: fantasía del jugador, pilares, bucle, mecánicas y tono. La spec define una pieza implementable. Un GDD no debe convertirse automáticamente en código ni en specs numeradas.
 
-## Contexto y harness
+## 🧰 Contexto y harness
 
 Un agente sin contexto puede producir código plausible pero incorrecto. Un harness reduce esa incertidumbre con convenciones persistentes:
 
@@ -73,7 +77,10 @@ Un agente sin contexto puede producir código plausible pero incorrecto. Un harn
 
 El objetivo no es acumular archivos. Cada archivo debe resolver una ambigüedad real o ayudar a verificar una decisión.
 
-## Control y riesgos
+## 🛡️ Control y riesgos
+
+> [!WARNING]
+> Una respuesta convincente no equivale a una verificación real. Revisá el diff y la evidencia antes de aceptar un cambio.
 
 ### Riesgos habituales
 
@@ -93,7 +100,7 @@ El objetivo no es acumular archivos. Cada archivo debe resolver una ambigüedad 
 - Conservar evidencia y declarar limitaciones.
 - Detenerse ante ambigüedad, acciones destructivas o secretos.
 
-## Panorama actual
+## 🔭 Panorama actual
 
 El ecosistema incluye agentes integrados a editores, CLIs de programación, proveedores de modelos, registros de skills y herramientas de evaluación. OpenCode es el ejemplo del workshop. También existen herramientas como Claude Code, Codex, Cursor, GitHub Copilot y Gemini CLI; se mencionan como alternativas, pero no forman parte del soporte inicial del CLI.
 
@@ -108,10 +115,13 @@ Panorama revisado el 2026-09-17. Estas referencias describen herramientas y conc
 - [AutoSkills](https://github.com/midudev/autoskills)
 - [Anthropic Skill Creator](https://www.skills.sh/anthropics/skills/skill-creator)
 
-## Uso académico responsable
+## 🎓 Uso académico responsable
 
 El estudiante debe poder explicar la intención, el proceso y la evidencia de su trabajo. Se debe declarar asistencia de IA cuando la institución lo requiera. No se deben compartir claves, datos personales, material con licencia incompatible ni repositorios privados sin autorización. El agente puede ayudar a producir; no sustituye la comprensión ni la evaluación del estudiante.
 
-## Siguiente lectura
+> [!CAUTION]
+> No compartas claves, datos personales, material con licencia incompatible ni repositorios privados sin autorización.
+
+## ➡️ Siguiente lectura
 
 [Continúa con la guía del workshop](02-guia-workshop.md) para aplicar este ciclo a un proyecto existente.
