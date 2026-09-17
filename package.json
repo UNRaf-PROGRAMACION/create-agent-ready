@@ -1,0 +1,41 @@
+{
+  "name": "create-agent-ready-unraf",
+  "version": "0.1.0",
+  "description": "Prepare an existing project for agent-guided development and Spec-Driven Development.",
+  "type": "module",
+  "bin": {
+    "create-agent-ready-unraf": "bin/create-agent-ready-unraf.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check bin/create-agent-ready-unraf.js && node --check src/args.js && node --check src/autoskills.js && node --check src/doctor.js && node --check src/scaffold.js && node --check src/templates.js && npm test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UNRaf-PROGRAMACION/create-agent-ready.git"
+  },
+  "bugs": {
+    "url": "https://github.com/UNRaf-PROGRAMACION/create-agent-ready/issues"
+  },
+  "homepage": "https://github.com/UNRaf-PROGRAMACION/create-agent-ready#readme",
+  "keywords": [
+    "agents",
+    "agentic-development",
+    "sdd",
+    "spec-driven-development",
+    "opencode",
+    "videogames"
+  ],
+  "license": "MIT"
+}
