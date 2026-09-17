@@ -8,14 +8,21 @@
   },
   "files": [
     "bin/",
-    "src/",
+    "src/args.js",
+    "src/autoskills.js",
+    "src/doctor.js",
+    "src/scaffold.js",
+    "src/templates.js",
     "README.md",
     "LICENSE",
     "CHANGELOG.md"
   ],
   "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
     "test": "node --test",
-    "check": "node --check bin/create-agent-ready-unraf.js && node --check src/args.js && node --check src/autoskills.js && node --check src/doctor.js && node --check src/scaffold.js && node --check src/templates.js && npm test",
+    "check": "node --check bin/create-agent-ready-unraf.js && node --check src/args.js && node --check src/autoskills.js && node --check src/doctor.js && node --check src/scaffold.js && node --check src/templates.js && npm test && npm run build",
     "pack:check": "npm pack --dry-run"
   },
   "engines": {
@@ -28,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/UNRaf-PROGRAMACION/create-agent-ready/issues"
   },
-  "homepage": "https://github.com/UNRaf-PROGRAMACION/create-agent-ready#readme",
+  "homepage": "https://unraf-programacion.github.io/create-agent-ready/",
   "keywords": [
     "agents",
     "agentic-development",
@@ -37,5 +44,25 @@
     "opencode",
     "videogames"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.23",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.47.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^6.4.3"
+  }
 }
