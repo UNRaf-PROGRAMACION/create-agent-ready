@@ -6,7 +6,9 @@
 [![Node.js 18 o superior](https://img.shields.io/badge/Node.js-%3E%3D18-7df9d1.svg)](https://nodejs.org/)
 [![Deploy GitHub Pages](https://github.com/UNRaf-PROGRAMACION/create-agent-ready/actions/workflows/pages.yml/badge.svg)](https://github.com/UNRaf-PROGRAMACION/create-agent-ready/actions/workflows/pages.yml)
 
-[Leer las guías](https://unraf-programacion.github.io/create-agent-ready/) | [Repositorio](https://github.com/UNRaf-PROGRAMACION/create-agent-ready) | [Reportar un problema](https://github.com/UNRaf-PROGRAMACION/create-agent-ready/issues)
+[![Abrir guías en línea](https://img.shields.io/badge/ABRIR_GU%C3%8DAS_EN_L%C3%8DNEA-7df9d1?style=for-the-badge&labelColor=080d1b)](https://unraf-programacion.github.io/create-agent-ready/)
+
+[Repositorio](https://github.com/UNRaf-PROGRAMACION/create-agent-ready) | [Reportar un problema](https://github.com/UNRaf-PROGRAMACION/create-agent-ready/issues)
 
 ## Qué hace
 
@@ -109,13 +111,15 @@ Antes de aceptar un cambio, inspeccioná el diff, ejecutá las verificaciones di
 
 ## Documentación
 
+**[Abrí las guías en línea ->](https://unraf-programacion.github.io/create-agent-ready/)**
+
 Seguí esta ruta para entender el método y aplicarlo a un proyecto:
 
 1. [Marco conceptual](docs/01-marco-conceptual.md): principios, vocabulario, riesgos y uso responsable.
 2. [Guía del workshop](docs/02-guia-workshop.md): recorrido práctico de dos jornadas, desde el GDD hasta la evidencia.
 3. [Referencia rápida del CLI](docs/03-referencia-cli.md): niveles, opciones, archivos generados y ejemplos.
 
-Para una lectura continua, consultá las [guías en la web](https://unraf-programacion.github.io/create-agent-ready/).
+Los Markdown se mantienen en el repositorio como fuente de contenido y para facilitar contribuciones.
 
 ## Uso académico responsable
 
