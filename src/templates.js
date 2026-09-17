@@ -5,7 +5,7 @@ const agents = text`# Agent Instructions
 ## Working agreement
 
 - Inspect the repository before proposing edits. State the relevant files, conventions, and verification commands.
-- Keep changes small and within the approved scope. Ask before destructive actions, dependency changes, or secret-related work.
+- Keep changes small and within the approved scope. Ask for explicit approval in the conversation before deleting or migrating data, publishing, installing dependencies, changing delivery configuration, accessing secrets, or using destructive Git operations.
 - Treat plans, tests, builds, captures, and human review as evidence. Do not claim a change works without naming the evidence.
 - Preserve existing project conventions. Do not replace project configuration merely to make a task easier.
 - Stop and explain when requirements, acceptance criteria, or verification are ambiguous.
@@ -108,29 +108,32 @@ const templates = {
     [".opencode/skills/verify/SKILL.md", verifySkill]
   ],
   sdd: [
-    [".sdd/README.md", "# Spec-Driven Development\n\nUse a spec to define a small change, a plan to inspect the technical path, and evidence to support the result. Specs are human-approved contracts, not automatic code-generation requests.\n"],
-    [".sdd/templates/spec.md", "# SPEC: <short title>\n\n## Problem and value\n\n## Scope\n\n## Non-scope\n\n## Constraints\n\n## Acceptance criteria\n- [ ] \n\n## Evidence expected\n\n## Open questions\n"],
-    [".sdd/templates/plan.md", "# Plan: <spec title>\n\n## Repository evidence\n\n## Proposed steps\n1. \n\n## Files and symbols\n\n## Verification\n\n## Stopping conditions\n"],
-    [".sdd/templates/evidence.md", "# Evidence: <spec title>\n\n## Verification performed\n\n## Result\n\n## Limitations and follow-up\n"],
+    [".sdd/README.md", "# Spec-Driven Development\n\nUse a spec to define a small change, a plan to inspect the technical path, and evidence to support the result. Specs are human-approved contracts, not automatic code-generation requests.\n\n## Working structure\n\n- Copy a template from `templates/` into `specs/`, `plans/`, or `evidence/`; do not edit the template for a single change.\n- Use the same sortable identifier across related records, for example `001-player-lives.md`.\n- Link the approved spec from its plan, and link the plan and spec from its evidence.\n- Keep records with the code and review them together.\n"],
+    [".sdd/specs/.gitkeep", ""],
+    [".sdd/plans/.gitkeep", ""],
+    [".sdd/evidence/.gitkeep", ""],
+    [".sdd/templates/spec.md", "# SPEC: <short title>\n\n## Problem and player or user value\n\n## Current and expected behavior\n\n## Related GDD or design reference\n\n## Scope\n\n## Non-scope\n\n## Constraints and assumptions\n\n## Acceptance criteria\n- [ ] \n\n## Evidence expected\n\n## Open questions\n\n## Human approval\n- Status: draft | approved | rejected\n- Approved by:\n- Date:\n"],
+    [".sdd/templates/plan.md", "# Plan: <spec title>\n\n## Source spec\n- Path:\n- Approval status:\n\n## Repository evidence\n\n## Proposed steps\n1. Step:\n   Criteria covered:\n\n## Files and symbols\n\n## Verification\n\n## Stopping conditions\n"],
+    [".sdd/templates/evidence.md", "# Evidence: <spec title>\n\n## Source records\n- Spec:\n- Plan:\n\n## Verification by acceptance criterion\n\n| Criterion | Verification command or manual steps | Expected result | Observed result | Evidence path or link | Limitations |\n| --- | --- | --- | --- | --- | --- |\n|  |  |  |  |  |  |\n\n## Result and follow-up\n"],
     [".opencode/skills/sdd-spec/SKILL.md", sddSpecSkill],
     [".opencode/skills/sdd-plan/SKILL.md", sddPlanSkill]
   ],
   pro: [
     [".sdd/templates/tasks.md", "# Tasks: <spec title>\n\n| Task | Acceptance criterion | Owner | Status | Evidence |\n| --- | --- | --- | --- | --- |\n|  |  |  |  |  |\n"],
     [".sdd/templates/traceability.md", "# Traceability: <spec title>\n\n| Criterion | Plan step | Change | Verification | Evidence |\n| --- | --- | --- | --- | --- |\n|  |  |  |  |  |\n"],
-    [".sdd/templates/risk-and-rollback.md", "# Risks and rollback: <spec title>\n\n## Risks\n\n## Stopping conditions\n\n## Rollback approach\n"],
-    [".sdd/templates/autopsy.md", "# Technical autopsy\n\n## Expected result\n\n## Observation and evidence\n\n## Causes to investigate\n\n## Decision and next action\n"],
+    [".sdd/templates/risk-and-rollback.md", "# Risks and rollback: <spec title>\n\n## Risks and impact\n\n## Stopping conditions and triggers\n\n## Backup or recovery point\n\n## Rollback owner\n\n## Rollback steps\n\n## Rollback verification\n"],
+    [".sdd/templates/autopsy.md", "# Technical autopsy\n\n## Expected result\n\n## Observation and evidence\n\n## Affected scope and impact\n\n## Causes to investigate\n\n## Decision and next action\n\n## Preventive action\n\n## Correction verification\n"],
     [".opencode/skills/sdd-traceability/SKILL.md", traceabilitySkill],
     [".opencode/skills/technical-autopsy/SKILL.md", autopsySkill],
-    [".github/pull_request_template.md", "## Summary\n\n## Related spec\n\n## Evidence\n\n## Risks or rollback\n\n## Human review checklist\n- [ ] Scope is understood\n- [ ] Acceptance criteria have evidence\n- [ ] Limitations are stated\n"]
+    [".github/pull_request_template.md", "## Summary\n\n## Related spec\n\n## Acceptance criteria and evidence\n\n| Criterion | Evidence |\n| --- | --- |\n|  |  |\n\n## Risks or rollback\n\n## Human review checklist\n- [ ] Scope is understood\n- [ ] Acceptance criteria have evidence\n- [ ] Limitations are stated\n"]
   ],
   workshop: [
-    [".agent-ready/workshop/guia-de-inicio.md", "# Workshop: inicio\n\n1. Run `npx create-agent-ready-unraf . --level=sdd --workshop`.\n2. Complete the game idea or bring an existing GDD.\n3. Define one small spec before asking an agent to edit code.\n4. Inspect the plan, approve the scope, and retain evidence.\n"],
-    [".agent-ready/workshop/checklist-de-progreso.md", "# Workshop checklist\n\n- [ ] Project and Git repository available\n- [ ] Game idea or GDD available\n- [ ] First spec has scope and non-scope\n- [ ] Plan references repository evidence\n- [ ] Verification and limitations recorded\n"],
+    [".agent-ready/workshop/guia-de-inicio.md", "# Workshop: getting started\n\n1. Review the paths that would be created: `npx create-agent-ready-unraf . --level=sdd --workshop --dry-run`.\n2. Apply the scaffold only after reviewing those paths: `npx create-agent-ready-unraf . --level=sdd --workshop`.\n3. Complete the game idea or bring an existing GDD.\n4. Define one small spec before asking an agent to edit code.\n5. Inspect the plan, approve the scope, and retain evidence.\n"],
+    [".agent-ready/workshop/checklist-de-progreso.md", "# Workshop checklist\n\n- [ ] Project available; a Git repository is recommended for diffs and evidence\n- [ ] Game idea or GDD available\n- [ ] First spec has scope, non-scope, and human approval\n- [ ] Plan references repository evidence and the approved spec\n- [ ] Verification and limitations recorded for each acceptance criterion\n"],
     [".agent-ready/workshop/checklist-de-cierre.md", "# Workshop closure\n\n- [ ] I can explain the difference between a GDD and a spec.\n- [ ] I reviewed a plan before implementation.\n- [ ] I can name the evidence for the latest change.\n- [ ] I know what requires a human decision.\n"],
     ["docs/game/idea-de-juego.md", "# My game idea\n\n## Player fantasy\n\n## Core loop\n\n## Design pillars\n\n## First playable version\n\n## Out of scope for now\n"],
-    ["docs/game/gdd-breve.md", "# Brief Game Design Document\n\n## Premise and audience\n\n## Player experience\n\n## Core mechanics\n\n## Rules, win and loss conditions\n\n## Progression or session structure\n\n## Art, sound, and interface notes\n\n## Technical constraints\n"],
-    [".sdd/templates/game-spec.md", "# Game spec: <short title>\n\n## Player intention\n\n## Related design pillar\n\n## Playable scope\n\n## Non-scope\n\n## Acceptance criteria\n- [ ] \n\n## Evidence\n" ]
+    ["docs/game/gdd-breve.md", "# Brief Game Design Document\n\n## Premise and audience\n\n## Player fantasy\n\n## Player experience\n\n## Core loop\n\n## Design pillars\n\n## Core mechanics\n\n## Rules, win and loss conditions\n\n## Progression or session structure\n\n## First playable version\n\n## Art, sound, and interface notes\n\n## Technical constraints\n"],
+    [".sdd/templates/game-spec.md", "# Game spec: <short title>\n\n## Player intention\n\n## Related GDD and design pillar\n\n## Current and expected playable behavior\n\n## Playable scope\n\n## Non-scope\n\n## Rules and constraints\n\n## Acceptance criteria\n- [ ] \n\n## Evidence expected\n\n## Open questions and assumptions\n\n## Human approval\n- Status: draft | approved | rejected\n- Approved by:\n- Date:\n" ]
   ],
   gdd: [
     [".opencode/skills/gdd-to-sdd/SKILL.md", gddSkill],

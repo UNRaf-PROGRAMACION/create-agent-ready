@@ -22,7 +22,7 @@ audience: Estudiantes de Videojuegos UNRAF
 
 ### Durante el workshop
 
-Se instala OpenCode y se configuran modelos gratuitos. La herramienta es un ejemplo: el método sigue siendo aplicable a otros agentes.
+La persona facilitadora instala OpenCode y configura modelos gratuitos siguiendo la [documentación vigente](https://opencode.ai/docs/). Es un paso externo al CLI: la herramienta es un ejemplo y el método sigue siendo aplicable a otros agentes.
 
 > [!IMPORTANT]
 > No se autoriza código hasta haber inspeccionado el repositorio y aprobado una spec con alcance acotado.
@@ -64,6 +64,8 @@ Al finalizar, reconocer estos archivos:
 | `.sdd/templates/` | Moldes para specs, planes y evidencia. |
 | `docs/game/gdd-breve.md` | Punto de partida si no existe un GDD. |
 | `.agent-ready/workshop/` | Checklist y guía de la práctica. |
+
+El primer comando sólo muestra las rutas previstas; no muestra el contenido de los archivos. Después de aplicar el scaffold, revisar el diff local antes de continuar.
 
 ### Definir la idea
 
@@ -150,13 +152,13 @@ Antes de elegir un proveedor pago, revisar modelo, límites, costo por token, pr
 
 ## 🧩 Opcional: skills posteriores
 
-AutoSkills puede sugerir skills según la tecnología del proyecto:
+AutoSkills puede sugerir skills según la tecnología del proyecto. El modo de descubrimiento no crea archivos mediante este CLI:
 
 ```bash
 npx create-agent-ready-unraf . --skills=discover
 ```
 
-La instalación es una decisión consciente porque descarga contenido externo:
+La instalación es una decisión consciente porque descarga contenido externo y solicita confirmación, salvo que se use `--yes`:
 
 ```bash
 npx create-agent-ready-unraf . --skills=install

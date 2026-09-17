@@ -4,10 +4,11 @@ import { filesFor } from "./templates.js";
 import { CliError } from "./args.js";
 
 const manifestPath = ".agent-ready/manifest.json";
+const generatorName = "create-agent-ready-unraf";
 
 function readManifest(target) {
   const path = join(target, manifestPath);
-  if (!existsSync(path)) return { files: [] };
+  if (!existsSync(path)) return null;
   try {
     return JSON.parse(readFileSync(path, "utf8"));
   } catch {
@@ -18,7 +19,10 @@ function readManifest(target) {
 export function planScaffold(target, options) {
   if (!existsSync(target)) throw new CliError(`Target directory does not exist: ${target}`);
   const manifest = readManifest(target);
-  const generated = new Set(manifest.files || []);
+  if (manifest && manifest.generator !== generatorName) {
+    throw new CliError(`Refusing to replace an unmanaged manifest: ${join(target, manifestPath)}\nMove it or use a different target directory.`);
+  }
+  const generated = new Set(manifest?.files || []);
   const files = filesFor(options);
   const conflicts = files
     .filter(({ path }) => existsSync(join(target, path)) && !generated.has(path))
@@ -52,12 +56,12 @@ export function writeScaffold(target, options, version) {
   }
   const previousManifest = readManifest(target);
   const manifest = {
-    generator: "create-agent-ready-unraf",
+    generator: generatorName,
     version,
     level: options.level,
     workshop: options.workshop,
     additions: options.additions,
-    files: [...new Set([...(previousManifest.files || []), ...selectedFiles])].sort()
+    files: [...new Set([...(previousManifest?.files || []), ...selectedFiles])].sort()
   };
   const destination = join(target, manifestPath);
   mkdirSync(dirname(destination), { recursive: true });

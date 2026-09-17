@@ -5,7 +5,7 @@ title: Referencia rápida de create-agent-ready-unraf
 # Referencia rápida del CLI
 
 > [!TIP]
-> **Uso habitual:** preparar el proyecto actual con SDD y revisar los cambios antes de escribirlos.
+> **Uso habitual:** preparar el proyecto actual con SDD y revisar las rutas antes de escribirlas.
 
 ```bash
 npx create-agent-ready-unraf . --level=sdd --dry-run
@@ -19,7 +19,7 @@ npx create-agent-ready-unraf . --level=sdd --dry-run
 npx create-agent-ready-unraf [directorio] [opciones]
 ```
 
-El punto (`.`) significa "el directorio actual". Si la terminal está abierta en la raíz del proyecto, el comando prepara ese proyecto.
+El punto (`.`) significa "el directorio actual". Si la terminal está abierta en la raíz del proyecto, el comando prepara ese proyecto. Para una práctica reproducible se puede fijar una versión publicada: `npx create-agent-ready-unraf@<version> . --level=sdd --dry-run`.
 
 ```bash
 # Preparar el proyecto actual.
@@ -59,12 +59,12 @@ Usar `--skills` por sí solo no genera archivos: permite descubrir o instalar sk
 
 | Opción | Qué hace |
 | --- | --- |
-| `--dry-run` | Muestra los archivos que se escribirían sin modificar el proyecto. |
+| `--dry-run` | Muestra las rutas que se escribirían sin modificar el proyecto; no muestra su contenido. |
 | `--doctor` | Reporta el estado del entorno y la preparación del proyecto. |
 | `--force` | Reemplaza sólo archivos generados y registrados previamente por este CLI. |
 
 > [!WARNING]
-> `--force` no habilita a modificar archivos propios del proyecto. Sólo reemplaza rutas registradas en `.agent-ready/manifest.json`.
+> `--force` no habilita a modificar archivos propios del proyecto. Sólo reemplaza rutas registradas en `.agent-ready/manifest.json`. Un manifiesto de otro origen bloquea la operación para evitar sobrescribirlo.
 
 ## 📦 Archivos generados
 
@@ -74,6 +74,7 @@ Usar `--skills` por sí solo no genera archivos: permite descubrir o instalar sk
 | `.agent-ready/manifest.json` | Registro de archivos generados y protección contra sobrescritura. |
 | `.opencode/skills/` | Skills del ejemplo OpenCode. |
 | `.sdd/templates/` | Plantillas de specs, planes, evidencia y prácticas pro. |
+| `.sdd/specs/`, `.sdd/plans/`, `.sdd/evidence/` | Destinos para las instancias reales copiadas desde las plantillas. |
 | `docs/game/` | Idea de juego y GDD breve, cuando se usa `--workshop`. |
 
 ## 💡 Ejemplos frecuentes
@@ -102,8 +103,9 @@ npx create-agent-ready-unraf . --level=sdd-pro
 
 | Situación | Qué revisar |
 | --- | --- |
-| El CLI detecta archivos existentes. | Ejecutar primero con `--dry-run`. El CLI protege archivos que no generó. |
+| El CLI detecta archivos existentes. | Ejecutar primero con `--dry-run`, que sólo lista rutas. El CLI protege archivos que no generó. |
 | Se necesita actualizar archivos del harness. | Usar `--force` sólo si fueron registrados previamente en `.agent-ready/manifest.json`. |
+| Ya existe un manifiesto de otro origen. | Mover el manifiesto o elegir otro directorio. El CLI no lo reemplaza. |
 | AutoSkills no se ejecuta. | Verificar que Node.js sea `>=22.6`, o ejecutar el scaffold sin `--skills`. |
 | Se quiere usar `gdd-to-sdd`. | Usar un nivel `sdd` o `sdd-pro`; no está disponible con `base`. |
 

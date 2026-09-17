@@ -26,7 +26,7 @@ El CLI prepara la estructura para sostener este ciclo. La persona sigue siendo r
 
 ## ⚡ Inicio rápido
 
-Desde la raíz de un proyecto existente, revisá primero qué archivos se escribirían y aplicá el cambio sólo después de inspeccionarlo:
+Desde la raíz de un proyecto existente, revisá primero las rutas que se escribirían y aplicá el cambio sólo después de inspeccionarlas:
 
 ```bash
 npx create-agent-ready-unraf . --level=sdd --dry-run
@@ -34,7 +34,7 @@ npx create-agent-ready-unraf . --level=sdd
 ```
 
 > [!IMPORTANT]
-> Revisá primero el resultado de `--dry-run`. Aplicá cambios sólo después de inspeccionar los archivos propuestos.
+> `--dry-run` muestra rutas, no el contenido de los archivos. Aplicá cambios sólo después de inspeccionar las rutas propuestas; luego revisá el diff local.
 
 El nivel `sdd` agrega `AGENTS.md`, `.sdd/` y otros archivos de apoyo para definir cambios pequeños, planificarlos y registrar evidencia.
 
@@ -59,7 +59,7 @@ Consultá la [referencia rápida del CLI](docs/03-referencia-cli.md) para conoce
 | Ruta | Propósito |
 | --- | --- |
 | `AGENTS.md` | Acuerdo persistente de trabajo para agentes dentro del repositorio. |
-| `.sdd/` | Specs, planes, evidencia y trazabilidad del proceso. |
+| `.sdd/` | Plantillas y carpetas para specs, planes, evidencia y trazabilidad del proceso. |
 | `.opencode/skills/` | Adaptaciones de skills para los ejemplos con OpenCode. |
 | `.agent-ready/manifest.json` | Registro de archivos generados; protege los archivos propios. |
 
@@ -109,7 +109,7 @@ npx create-agent-ready-unraf . --level=sdd --force
 ```
 
 > [!WARNING]
-> `--force` no permite reemplazar archivos propios del proyecto. Sólo actualiza rutas registradas previamente en `.agent-ready/manifest.json`.
+> `--force` no permite reemplazar archivos propios del proyecto. Sólo actualiza rutas registradas previamente en `.agent-ready/manifest.json`. Si ya existe un manifiesto de otro origen, el CLI se detiene sin reemplazarlo.
 
 Antes de aceptar un cambio, inspeccioná el diff, ejecutá las verificaciones disponibles y registrá las limitaciones.
 
@@ -126,7 +126,7 @@ Seguí esta ruta para entender el método y aplicarlo a un proyecto:
 2. [Guía del workshop](docs/02-guia-workshop.md): recorrido práctico de dos jornadas, desde el GDD hasta la evidencia.
 3. [Referencia rápida del CLI](docs/03-referencia-cli.md): niveles, opciones, archivos generados y ejemplos.
 
-Los Markdown se mantienen en el repositorio como fuente de contenido y para facilitar contribuciones.
+Los Markdown se mantienen en el repositorio como fuente de contenido y para facilitar contribuciones. Dentro de un proyecto preparado, copiá las plantillas de `.sdd/templates/` a `.sdd/specs/`, `.sdd/plans/` o `.sdd/evidence/`; usá el mismo identificador en los registros relacionados.
 
 ## 🎓 Uso académico responsable
 
@@ -136,7 +136,7 @@ El agente puede ayudar a producir; no sustituye la comprensión ni la evaluació
 
 ## 🔧 Desarrollo
 
-Se requiere Node.js 18 o superior.
+Se requiere Node.js 18 o superior. Para workshops reproducibles se puede fijar la versión publicada, por ejemplo `npx create-agent-ready-unraf@<version> . --level=sdd --dry-run`.
 
 ```bash
 npm test
