@@ -1,43 +1,51 @@
 ---
-title: Workshop de Desarrollo Guiado por Agentes
+title: Workshop de desarrollo guiado por agentes
 duration: 4 horas en dos jornadas de 2 horas
 audience: Estudiantes de Videojuegos UNRAF
 ---
 
-# Workshop: Del GDD a una Spec y un Cambio Verificable
+# Workshop: del GDD a una spec y un cambio verificable
 
-## Resultado esperado
+> **Resultado esperado:** terminar con un proyecto preparado para trabajar con agentes, una primera spec aprobada y un plan técnico basado en evidencia del repositorio.
 
-Cada participante termina con un proyecto existente preparado para trabajar con agentes, una idea o GDD breve, una primera spec definida por la persona y un plan técnico basado en evidencia del repositorio. Si el tiempo y el proyecto lo permiten, inicia un cambio pequeño y guarda su evidencia.
+[Inicio](../README.md) | [Marco conceptual](01-marco-conceptual.md) | [Referencia del CLI](03-referencia-cli.md)
 
-## Preparación
+## Antes de empezar
 
-Antes de la primera jornada:
+### Necesitás
 
 - Node.js 18 o superior y Git instalados.
 - Un proyecto existente creado con el motor o tecnología elegida.
-- Una idea de juego o GDD previo. Se acepta cualquier formato.
+- Una idea de juego o GDD previo; se acepta cualquier formato.
 - La plantilla de GDD breve disponible como alternativa.
 
-Durante el workshop se instala OpenCode y se configuran modelos gratuitos. La herramienta es un ejemplo: el método sigue siendo aplicable a otros agentes.
+### Durante el workshop
 
-## Jornada 1: Contexto, Harness Y GDD
+Se instala OpenCode y se configuran modelos gratuitos. La herramienta es un ejemplo: el método sigue siendo aplicable a otros agentes.
 
-### 0:00 a 0:20 - Qué hace un agente
+> **Recordatorio:** no se autoriza código hasta haber inspeccionado el repositorio y aprobado una spec con alcance acotado.
 
-Presentar modelo, LLM, token, proveedor, agente, herramienta, contexto y evidencia. Aclarar que una salida plausible no equivale a una verificación.
+## Jornada 1: contexto, harness y GDD
 
-### 0:20 a 0:40 - SDD mínimo
+### 0:00 a 0:20 | Qué hace un agente
 
-Presentar el ciclo:
+**Objetivo:** distinguir modelo, LLM, token, proveedor, agente, herramienta, contexto y evidencia.
+
+Presentar que una salida plausible no equivale a una verificación. El agente ayuda a explorar, planificar, cambiar y comprobar, pero no decide por el equipo.
+
+### 0:20 a 0:40 | SDD mínimo
+
+**Objetivo:** entender cómo una idea se transforma en un cambio verificable.
 
 ```text
 GDD o idea -> spec -> plan -> cambio -> evidencia -> decisión humana
 ```
 
-Comparar un GDD con una spec. El GDD explica por qué el juego existe y qué experiencia busca. La spec acota un cambio concreto.
+El GDD explica por qué existe el juego y qué experiencia busca. La spec acota un cambio concreto y observable.
 
-### 0:40 a 1:05 - Preparar el proyecto
+### 0:40 a 1:05 | Preparar el proyecto
+
+**Objetivo:** instalar el harness sin sobrescribir archivos por sorpresa.
 
 En la raíz del proyecto:
 
@@ -46,14 +54,18 @@ npx create-agent-ready-unraf . --level=sdd --workshop --dry-run
 npx create-agent-ready-unraf . --level=sdd --workshop
 ```
 
-Explicar los archivos principales:
+Al finalizar, reconocer estos archivos:
 
-- `AGENTS.md`: acuerdo de trabajo para agentes.
-- `.sdd/templates/`: moldes para specs, planes y evidencia.
-- `docs/game/gdd-breve.md`: punto de partida si no existe GDD.
-- `.agent-ready/workshop/`: checklist de la práctica.
+| Ruta | Para qué sirve |
+| --- | --- |
+| `AGENTS.md` | Acuerdo de trabajo para agentes. |
+| `.sdd/templates/` | Moldes para specs, planes y evidencia. |
+| `docs/game/gdd-breve.md` | Punto de partida si no existe un GDD. |
+| `.agent-ready/workshop/` | Checklist y guía de la práctica. |
 
-### 1:05 a 1:35 - Definir la idea
+### 1:05 a 1:35 | Definir la idea
+
+**Objetivo:** registrar una visión suficiente para orientar el primer cambio.
 
 Cada estudiante completa o adapta:
 
@@ -63,23 +75,33 @@ Cada estudiante completa o adapta:
 - Primera versión jugable.
 - Elementos explícitamente fuera de alcance.
 
-### 1:35 a 2:00 - Explorar antes de cambiar
+**Resultado:** una idea de juego o GDD breve disponible para consulta.
+
+### 1:35 a 2:00 | Explorar antes de cambiar
+
+**Objetivo:** obtener evidencia del proyecto antes de proponer una implementación.
 
 Pedir al agente que inspeccione el repositorio en modo lectura. Debe informar estructura, motor, comandos de prueba y archivos relevantes. No se autoriza código todavía.
 
-## Jornada 2: Alinear, Especificar Y Verificar
+**Resultado:** información comprobable para decidir el alcance de la primera spec.
 
-### 0:00 a 0:25 - Relación GDD y specs
+## Jornada 2: alinear, especificar y verificar
 
-Agregar la capacidad opcional de análisis:
+### 0:00 a 0:25 | Relación entre GDD y specs
+
+**Objetivo:** separar la visión del juego de una unidad de trabajo implementable.
+
+Se puede agregar la capacidad opcional de análisis:
 
 ```bash
 npx create-agent-ready-unraf . --level=sdd --add=gdd-to-sdd
 ```
 
-La skill no crea specs automáticamente. Hace preguntas y detecta diferencias entre GDD y specs existentes.
+La skill no crea specs automáticamente. Hace preguntas y detecta diferencias entre el GDD y las specs existentes.
 
-### 0:25 a 0:55 - Primera spec
+### 0:25 a 0:55 | Primera spec
+
+**Objetivo:** acordar qué se hará, qué no y cómo se demostrará el resultado.
 
 Elegir un cambio pequeño: movimiento básico, condición de derrota, interacción con un objeto o una regla de puntaje. Completar:
 
@@ -88,15 +110,25 @@ Elegir un cambio pequeño: movimiento básico, condición de derrota, interacci�
 - Criterios observables.
 - Evidencia: test, captura, video, build o prueba manual.
 
-### 0:55 a 1:20 - Plan técnico
+**Gate humano:** la persona aprueba la spec antes de pedir implementación.
+
+### 0:55 a 1:20 | Plan técnico
+
+**Objetivo:** decidir el camino de implementación a partir del repositorio real.
 
 El agente inspecciona el proyecto y propone archivos, símbolos, pasos, verificación y condiciones de parada. La persona revisa el plan antes de permitir edición.
 
-### 1:20 a 1:45 - Cambio y evidencia
+**Gate humano:** aprobar, ajustar o rechazar el plan.
 
-Implementar sólo el cambio aprobado. Revisar diff, ejecutar la verificación disponible y completar la plantilla de evidencia. Si no existe automatización, registrar los pasos de prueba manual.
+### 1:20 a 1:45 | Cambio y evidencia
 
-### 1:45 a 2:00 - Cierre
+**Objetivo:** implementar sólo el cambio aprobado y demostrar su estado.
+
+Implementar el alcance acordado, revisar el diff, ejecutar la verificación disponible y completar la plantilla de evidencia. Si no existe automatización, registrar los pasos de prueba manual y sus limitaciones.
+
+**Gate humano:** aceptar el resultado o volver a la spec y al plan.
+
+### 1:45 a 2:00 | Cierre
 
 Responder:
 
@@ -105,13 +137,15 @@ Responder:
 3. ¿Qué debería actualizarse: GDD, spec o ambos?
 4. ¿Qué decisión siguió siendo humana?
 
-## Connect Provider
+## Opcional: proveedores y seguridad
 
-OpenCode puede conectarse a distintos proveedores y modelos. Para cambiar desde modelos gratuitos a opciones pagas, seguir la documentación vigente de OpenCode y del proveedor elegido. Nunca copiar una API key en `AGENTS.md`, una spec, un commit, una captura o un chat compartido. Usar variables de entorno o el mecanismo seguro recomendado por la herramienta.
+OpenCode puede conectarse a distintos proveedores y modelos. Para pasar de modelos gratuitos a opciones pagas, seguir la documentación vigente de OpenCode y del proveedor elegido.
+
+> **Nunca** copiar una API key en `AGENTS.md`, una spec, un commit, una captura o un chat compartido. Usar variables de entorno o el mecanismo seguro recomendado por la herramienta.
 
 Antes de elegir un proveedor pago, revisar modelo, límites, costo por token, privacidad y política institucional.
 
-## Complementos Posteriores
+## Opcional: skills posteriores
 
 AutoSkills puede sugerir skills según la tecnología del proyecto:
 
@@ -126,3 +160,7 @@ npx create-agent-ready-unraf . --skills=install
 ```
 
 Skill Creator se presenta como un recurso posterior para crear o mejorar una skill local cuando el equipo detecta una tarea repetitiva. El objetivo del workshop es construir software, no producir skills.
+
+## Siguiente lectura
+
+Consultá la [referencia rápida del CLI](03-referencia-cli.md) durante la práctica para revisar opciones, requisitos y ejemplos.
