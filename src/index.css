@@ -68,7 +68,7 @@ button { font: inherit; }
 .guide-prose blockquote { margin: 1.6rem 0; border-left: 3px solid #ffbe5c; background: rgba(255,190,92,.07); padding: .5rem 1.25rem; }
 .guide-prose blockquote p { color: #e7edf9; }
 .markdown-alert { margin: 1.6rem 0; border: 1px solid; border-left-width: 3px; border-radius: .125rem; padding: .9rem 1rem; }
-.markdown-alert-title { display: flex; align-items: center; gap: .45rem; margin: 0; font-size: .75rem !important; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.guide-prose .markdown-alert-title { display: flex; align-items: center; gap: .45rem; margin: 0; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .markdown-alert-content p { margin: .45rem 0 0; }
 .markdown-alert-content p:first-child { margin-top: .45rem; }
 .markdown-alert-note { border-color: rgba(96, 165, 250, .5); background: rgba(59, 130, 246, .09); }
@@ -85,6 +85,16 @@ button { font: inherit; }
 .code-block .copy-button { position: absolute; top: .65rem; right: .65rem; }
 .guide-prose pre { margin: 0; overflow-x: auto; padding: 3.2rem 1.25rem 1.25rem; color: #dce7f8; font-family: "SFMono-Regular", Consolas, monospace; font-size: .84rem; line-height: 1.65; }
 .guide-prose :not(pre) > code { border-radius: .125rem; background: rgba(125,249,209,.1); padding: .14rem .35rem; color: #a8ffe6; font-family: "SFMono-Regular", Consolas, monospace; font-size: .88em; }
+.guide-prose .workflow-cards { margin: 1.75rem 0; padding: 0; list-style: none; }
+.guide-prose .workflow-step { padding: 0; }
+.workflow-card { display: flex; align-items: center; gap: 1.25rem; min-height: 5.5rem; border: 1px solid rgba(125,249,209,.22); border-radius: .125rem; background: linear-gradient(100deg, rgba(125,249,209,.09), rgba(255,255,255,.025)); padding: 1rem 1.25rem; }
+.workflow-step:last-child .workflow-card { border-color: rgba(255,190,92,.5); background: linear-gradient(100deg, rgba(255,190,92,.12), rgba(255,255,255,.025)); }
+.workflow-number { flex: none; color: #7df9d1; font-family: "Arial Narrow", "Roboto Condensed", Arial, sans-serif; font-size: 1.75rem; font-weight: 800; line-height: 1; }
+.workflow-step:last-child .workflow-number { color: #ffbe5c; }
+.workflow-title, .workflow-detail { display: block; }
+.workflow-title { color: #fff; font-weight: 800; line-height: 1.4; }
+.workflow-detail { margin-top: .2rem; color: #c4cedf; font-size: .875rem; line-height: 1.5; }
+.workflow-arrow { display: block; margin: .3rem auto; color: #7df9d1; }
 .guide-prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.6rem 0; font-size: .9rem; }
 .guide-prose th { color: #fff; background: rgba(255,255,255,.07); text-align: left; }
 .guide-prose th, .guide-prose td { min-width: 9rem; border: 1px solid rgba(255,255,255,.1); padding: .7rem .85rem; color: #c4cedf; line-height: 1.5; vertical-align: top; }

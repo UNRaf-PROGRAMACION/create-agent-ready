@@ -13,16 +13,26 @@ audience: Estudiantes de Videojuegos UNRAF
 
 ## ✅ Antes de empezar
 
-### Necesitás
+### Requisitos
 
-- Node.js 18 o superior y Git instalados.
+- [Node.js 18 o superior](https://nodejs.org/es/download) y [Git](https://git-scm.com/downloads) instalados para usar el CLI de este proyecto.
 - Un proyecto existente creado con el motor o tecnología elegida.
 - Una idea de juego o GDD previo; se acepta cualquier formato.
 - La plantilla de GDD breve disponible como alternativa.
 
+Para usar [OpenCode](https://opencode.ai/v2/docs/) desde la terminal, necesitás un sistema compatible y acceso a un modelo. Node.js 18 o superior es un requisito del CLI de este proyecto, no de OpenCode.
+
+**¿Puede correr OpenCode?** 🥔 Sí.
+
+«Si puede abrir una terminal, probablemente pueda correr OpenCode».
+
+🥔 PC papa · ✅ Terminal
+
+![Una papa con cables y componentes de computadora: meme de la PC papa.](../public/potato.jpg)
+
 ### Durante el workshop
 
-La persona facilitadora instala OpenCode y configura modelos gratuitos siguiendo la [documentación vigente](https://opencode.ai/docs/). Es un paso externo al CLI: la herramienta es un ejemplo y el método sigue siendo aplicable a otros agentes.
+La persona facilitadora instala OpenCode y configura modelos gratuitos siguiendo la [documentación vigente](https://opencode.ai/v2/docs/). Es un paso externo al CLI: la herramienta es un ejemplo y el método sigue siendo aplicable a otros agentes.
 
 > [!IMPORTANT]
 > No se autoriza código hasta haber inspeccionado el repositorio y aprobado una spec con alcance acotado.

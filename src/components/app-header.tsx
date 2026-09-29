@@ -1,9 +1,15 @@
-import { Menu, Terminal } from "lucide-react";
+import { Menu } from "lucide-react";
 import type { GuideId } from "../content/guides";
 import { guideHref, guides } from "../content/guides";
 import { GithubRepoLink } from "./github-repo-link";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+
+function LogoMark({ className }: { className?: string }) {
+  return (
+    <img className={className} src={`${import.meta.env.BASE_URL}favicon.svg`} alt="Logotipo Agent Ready" />
+  );
+}
 
 type AppHeaderProps = { activeGuide?: GuideId };
 
@@ -28,7 +34,7 @@ export function AppHeader({ activeGuide }: AppHeaderProps) {
     <header className="sticky top-0 z-30 border-b border-white/10 bg-ink/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
         <a className="group flex items-center gap-2 text-white focus-visible:rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint" href="./" aria-label="Ir al inicio">
-          <span className="grid size-8 place-items-center rounded-xs bg-mint text-ink transition-transform duration-200 motion-safe:group-hover:-translate-y-0.5"><Terminal className="size-4" /></span>
+          <LogoMark className="size-8 transition-transform duration-200 motion-safe:group-hover:-translate-y-0.5" />
           <span className="font-display text-sm font-bold tracking-wide">AGENT READY</span>
         </a>
         <div className="hidden items-center gap-2 lg:flex">

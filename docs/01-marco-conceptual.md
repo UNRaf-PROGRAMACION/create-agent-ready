@@ -65,7 +65,7 @@ El agente acelera trabajo bajo restricciones. Si la evidencia falla o aparece in
 
 ## 🎨 ¿Qué es vibe coding?
 
-**Vibe coding** es el nombre que Andrej Karpathy dio en 2025 a una forma de programar asistida por IA: la persona expresa su intención en lenguaje natural y deja que las herramientas generen código. En vez de escribir cada línea, orienta el trabajo, prueba el resultado y ajusta sus instrucciones. Puede servir para explorar ideas y crear prototipos rápidos.
+**Vibe coding** es el nombre que [Andrej Karpathy](https://karpathy.ai/) dio en 2025 a una forma de programar asistida por IA: la persona expresa su intención en lenguaje natural y deja que las herramientas generen código. En vez de escribir cada línea, orienta el trabajo, prueba el resultado y ajusta sus instrucciones. Puede servir para explorar ideas y crear prototipos rápidos.
 
 Cuando una petición informal como «Hacé un endpoint que...» se usa para un cambio que debe mantenerse, quedan decisiones técnicas sin explicitar. El agente puede asumir requisitos, ampliar el alcance o generar código difícil de revisar y refactorizar. La persona sigue siendo responsable de comprender y validar el resultado.
 

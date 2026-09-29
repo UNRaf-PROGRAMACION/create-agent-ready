@@ -76,9 +76,6 @@ export function HolographicCard() {
             <br />
             <span className="text-mint">READY</span>
           </p>
-          <p className="mt-3 text-[9px] font-semibold uppercase tracking-[.13em] text-slate-300 sm:text-[10px]">
-            Vos decidís.
-          </p>
         </div>
         <div className="border-t border-mint/25 pt-3 text-[9px] font-semibold leading-5 tracking-[.09em] text-slate-300 sm:text-[10px]">
           <p>IDEA → CAMBIO → EVIDENCIA</p>
