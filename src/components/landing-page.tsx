@@ -1,6 +1,7 @@
 import { ArrowRight, BookOpen, CheckCircle2, GitFork, ShieldCheck, Terminal } from "lucide-react";
 import { guides, guideHref } from "../content/guides";
 import { CopyCodeButton } from "./copy-code-button";
+import { HolographicCard } from "./holographic-card";
 
 const command = "npx create-agent-ready-unraf . --level=sdd --dry-run";
 
@@ -27,15 +28,7 @@ export function LandingPage() {
               <span className="flex items-center gap-2"><CheckCircle2 className="size-4 text-mint" /> Con evidencia verificable</span>
             </div>
           </div>
-          <div className="flow-card relative z-10">
-            <p className="text-xs font-bold tracking-[.2em] text-amber">CICLO DE TRABAJO</p>
-            <div className="mt-7 space-y-3 font-display text-xl font-bold text-white">
-              {["contexto", "spec", "plan", "cambio pequeño", "verificación", "evidencia"].map((step, index) => (
-                <div className="flow-step" key={step}><span>0{index + 1}</span>{step}</div>
-              ))}
-            </div>
-            <p className="mt-7 border-t border-white/10 pt-5 text-sm leading-6 text-slate-400">La autoridad sobre el producto, el repositorio y la publicación sigue siendo humana.</p>
-          </div>
+          <div className="relative z-10 w-full"><HolographicCard /></div>
         </div>
       </section>
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
