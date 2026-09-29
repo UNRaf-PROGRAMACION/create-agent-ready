@@ -31,7 +31,7 @@ export default function App() {
       <>
         <AppHeader />
         <main className="mx-auto grid min-h-[65vh] max-w-7xl place-items-center px-5 py-16 lg:px-8">
-          <div className="max-w-lg text-center"><Compass className="mx-auto size-9 text-amber" /><p className="mt-6 text-xs font-bold tracking-[.18em] text-mint">RUTA NO ENCONTRADA</p><h1 className="mt-3 font-display text-4xl font-bold text-white">Esta guía no existe.</h1><a className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-mint hover:text-white" href="./"><ArrowLeft className="size-4" /> Volver al inicio</a></div>
+          <div className="max-w-lg text-center"><Compass className="mx-auto size-9 text-amber" /><p className="mt-6 text-xs font-bold tracking-[.18em] text-mint">RUTA NO ENCONTRADA</p><h1 className="mt-3 font-display text-4xl font-bold text-white">Esta guía no existe.</h1><a className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-mint hover:text-white" href={import.meta.env.BASE_URL}><ArrowLeft className="size-4" /> Volver al inicio</a></div>
         </main>
         <SiteFooter />
       </>

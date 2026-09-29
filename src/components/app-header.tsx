@@ -33,7 +33,7 @@ export function AppHeader({ activeGuide }: AppHeaderProps) {
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-ink/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
-        <a className="group flex items-center gap-2 text-white focus-visible:rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint" href="./" aria-label="Ir al inicio">
+        <a className="group flex items-center gap-2 text-white focus-visible:rounded-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint" href={import.meta.env.BASE_URL} aria-label="Ir al inicio">
           <LogoMark className="size-8 transition-transform duration-200 motion-safe:group-hover:-translate-y-0.5" />
           <span className="font-display text-sm font-bold tracking-wide">AGENT READY</span>
         </a>

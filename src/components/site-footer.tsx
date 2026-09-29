@@ -226,7 +226,7 @@ export function SiteFooter() {
           <nav aria-label="Enlaces del sitio">
             <p className="mb-5 text-xs font-bold uppercase tracking-[.18em] text-mint">Explorá</p>
             <ul className="space-y-3 text-sm text-white/85">
-              <li><a className="site-footer-link" href="./">Inicio</a></li>
+              <li><a className="site-footer-link" href={import.meta.env.BASE_URL}>Inicio</a></li>
               {guides.map((guide) => <li key={guide.id}><a className="site-footer-link" href={guideHref(guide.id)}>{guide.eyebrow}</a></li>)}
             </ul>
           </nav>
