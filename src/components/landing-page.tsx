@@ -11,7 +11,8 @@ export function LandingPage() {
     <main>
       <section className="hero-grid relative overflow-hidden border-b border-white/10">
         <AsciiBackground />
-        <div className="relative mx-auto grid min-h-[38rem] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-8">
+        <div className="hero-fade absolute inset-0 pointer-events-none" aria-hidden="true" />
+        <div className="relative z-10 mx-auto grid min-h-[38rem] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-8">
           <div className="relative z-10">
             <p className="eyebrow"><span /> Videojuegos UNRAF</p>
             <h1 className="mt-6 max-w-3xl font-display text-5xl font-black leading-[.96] tracking-[-.05em] text-white sm:text-7xl">
