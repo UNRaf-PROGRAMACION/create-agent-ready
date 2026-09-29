@@ -19,7 +19,11 @@ fn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {
   // Inverse sampling compresses the grid around the pointer. Rotation and
   // cursor velocity bend the nearby squares into a flowing wake.
   let flow = vec2f(-delta.y, delta.x) * (0.065 * influence) + params.motion * (1.4 * influence);
-  let displaced = position + delta * (0.38 * influence) - flow;
+  let idle = vec2f(
+    sin(position.y * 0.012 + params.time * 0.45) + sin(position.x * 0.009 - params.time * 0.25),
+    cos(position.x * 0.011 + params.time * 0.38) + sin(position.y * 0.008 - params.time * 0.27)
+  ) * (0.4 * (1.0 - params.hover));
+  let displaced = position + delta * (0.38 * influence) - flow - idle;
   let cell = floor(displaced / 12.0);
   let local = displaced - cell * 12.0;
   let noise = hash(cell);

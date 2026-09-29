@@ -64,8 +64,10 @@ export function createAsciiFallback(canvas: HTMLCanvasElement, reducedMotion: bo
         const size = Math.max(2.4, Math.min(9.5, 2.4 + shape * 6.1 + noise * 0.5 + influence * 0.7));
         const flowX = pointer.x + dx * (1 - 0.28 * influence) - dy * 0.065 * influence + motion.x * 1.4 * influence;
         const flowY = pointer.y + dy * (1 - 0.28 * influence) + dx * 0.065 * influence + motion.y * 1.4 * influence;
+        const idleX = (Math.sin(py * 0.012 + seconds * 0.45) + Math.sin(px * 0.009 - seconds * 0.25)) * 0.4 * (1 - hover);
+        const idleY = (Math.cos(px * 0.011 + seconds * 0.38) + Math.sin(py * 0.008 - seconds * 0.27)) * 0.4 * (1 - hover);
         context.fillStyle = `rgba(255, 179, 64, ${0.06 + shape * 0.13 + noise * 0.035 + influence * 0.12})`;
-        context.fillRect(flowX - size / 2, flowY - size / 2, size, size);
+        context.fillRect(flowX + idleX - size / 2, flowY + idleY - size / 2, size, size);
       }
     }
     if (!reducedMotion) frame = requestAnimationFrame(draw);
