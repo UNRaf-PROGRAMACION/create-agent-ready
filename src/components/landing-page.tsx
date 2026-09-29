@@ -1,5 +1,6 @@
 import { ArrowRight, BookOpen, CheckCircle2, GitFork, ShieldCheck, Terminal } from "lucide-react";
 import { guides, guideHref } from "../content/guides";
+import { AsciiBackground } from "./ascii-background";
 import { CopyCodeButton } from "./copy-code-button";
 import { HolographicCard } from "./holographic-card";
 
@@ -8,8 +9,9 @@ const command = "npx create-agent-ready-unraf . --level=sdd --dry-run";
 export function LandingPage() {
   return (
     <main>
-      <section className="hero-grid overflow-hidden border-b border-white/10">
-        <div className="mx-auto grid min-h-[38rem] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-8">
+      <section className="hero-grid relative overflow-hidden border-b border-white/10">
+        <AsciiBackground />
+        <div className="relative mx-auto grid min-h-[38rem] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-8">
           <div className="relative z-10">
             <p className="eyebrow"><span /> Videojuegos UNRAF</p>
             <h1 className="mt-6 max-w-3xl font-display text-5xl font-black leading-[.96] tracking-[-.05em] text-white sm:text-7xl">

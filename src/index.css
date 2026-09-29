@@ -21,6 +21,8 @@ a { color: inherit; }
 button { font: inherit; }
 
 .hero-grid { background: #080d1b; }
+.hero-grid::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(8,13,27,.6), transparent 70%); }
+.ascii-background { z-index: 0; }
 .eyebrow { display: flex; align-items: center; gap: .65rem; color: #7df9d1; font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
 .eyebrow span { width: 2rem; height: 1px; background: currentColor; }
 .command-panel { position: relative; border: 1px solid rgba(125, 249, 209, .25); border-radius: .75rem; background: rgba(5, 10, 23, .8); padding: 1.25rem; box-shadow: 0 0 40px rgba(125, 249, 209, .07); }
