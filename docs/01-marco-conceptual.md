@@ -29,8 +29,14 @@ Un agente puede leer archivos, buscar símbolos, proponer planes, editar código
 
 Por eso se trabaja en un ciclo corto y observable:
 
-```text
-GDD o intención -> spec -> plan -> cambio pequeño -> verificación -> evidencia -> decisión humana
+```workflow
+GDD o intención | Definí qué necesita la persona jugadora.
+Spec | Acotá el cambio y sus criterios de aceptación.
+Plan | Elegí una ruta técnica revisable.
+Cambio pequeño | Implementá una pieza por vez.
+Verificación | Comprobá el comportamiento esperado.
+Evidencia | Registrá resultados y limitaciones.
+Decisión humana | Aceptá, ajustá o volvé a planificar.
 ```
 
 El agente acelera trabajo bajo restricciones. Si la evidencia falla o aparece información nueva, se vuelve a la spec o al plan. La autoridad sobre el producto, el repositorio y la publicación sigue siendo humana.

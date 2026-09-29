@@ -1,16 +1,8 @@
 import { ArrowDown } from "lucide-react";
 
-const steps = [
-  { title: "GDD o intención", detail: "Definí qué necesita la persona jugadora." },
-  { title: "Spec", detail: "Acotá el cambio y sus criterios de aceptación." },
-  { title: "Plan", detail: "Elegí una ruta técnica revisable." },
-  { title: "Cambio pequeño", detail: "Implementá una pieza por vez." },
-  { title: "Verificación", detail: "Comprobá el comportamiento esperado." },
-  { title: "Evidencia", detail: "Registrá resultados y limitaciones." },
-  { title: "Decisión humana", detail: "Aceptá, ajustá o volvé a planificar." },
-] as const;
+export type WorkflowStep = { title: string; detail: string };
 
-export function WorkflowCards() {
+export function WorkflowCards({ steps }: { steps: WorkflowStep[] }) {
   return (
     <ol className="workflow-cards" aria-label="Etapas del ciclo de trabajo">
       {steps.map((step, index) => (

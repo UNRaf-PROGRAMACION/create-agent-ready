@@ -6,7 +6,7 @@ import type { Guide } from "../content/guides";
 import { guideHref } from "../content/guides";
 import { guideIdFromHref, nodeText, slugify } from "../lib/markdown";
 import { CopyCodeButton } from "./copy-code-button";
-import { WorkflowCards } from "./workflow-cards";
+import { WorkflowCards, type WorkflowStep } from "./workflow-cards";
 
 function externalLinkProps(href: string): { target?: string; rel?: string } {
   if (!/^https?:\/\//i.test(href)) return {};
@@ -44,10 +44,15 @@ export function GuideRenderer({ guide }: { guide: Guide }) {
           ),
           blockquote: ({ children, node }) => <Blockquote node={node}>{children}</Blockquote>,
           pre: ({ children }) => {
-            const text = nodeText(children).trim();
-            return guide.id === "marco-conceptual" && text === "GDD o intención -> spec -> plan -> cambio pequeño -> verificación -> evidencia -> decisión humana"
-              ? <WorkflowCards />
-              : <CodeBlock>{children}</CodeBlock>;
+            if (isValidElement<{ className?: string }>(children) && children.props.className === "language-workflow") {
+              const lines = nodeText(children).trim().split(/\r?\n/);
+              const steps: WorkflowStep[] = lines.map((line) => {
+                const [title, detail] = line.split(" | ");
+                return { title, detail };
+              });
+              if (steps.every((step) => step.title && step.detail)) return <WorkflowCards steps={steps} />;
+            }
+            return <CodeBlock>{children}</CodeBlock>;
           },
         }}
       >
