@@ -22,7 +22,6 @@ export function AsciiBackground() {
       dispose = renderer.dispose;
       void renderer.ready.then(() => {
         if (mounted) {
-          canvas.parentElement?.classList.add("ascii-ready");
           setReady(true);
           stopFallback();
           stopFallback = () => {};
@@ -36,7 +35,6 @@ export function AsciiBackground() {
 
     return () => {
       mounted = false;
-      canvas.parentElement?.classList.remove("ascii-ready");
       stopFallback();
       dispose();
     };

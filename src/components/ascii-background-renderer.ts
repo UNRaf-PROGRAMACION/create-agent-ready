@@ -1,4 +1,4 @@
-import { effect, frameLoop, init, surface, type Gpu } from "vgpu";
+import { clock, effect, frameLoop, init, surface, type Gpu } from "vgpu";
 import fragment from "./ascii-background.wgsl?raw";
 
 export function createAsciiRenderer(canvas: HTMLCanvasElement) {
@@ -20,16 +20,18 @@ export function createAsciiRenderer(canvas: HTMLCanvasElement) {
     const output = surface(context, canvas, { dpr: [1, 2] });
     const shader = effect(context, fragment, {
       label: "agent-ready-ascii-background",
-      set: { params: { resolution: [canvas.clientWidth, canvas.clientHeight], pointer: [-1000, -1000], motion: [0, 0], hover: 0 } },
+      set: { params: { resolution: [canvas.clientWidth, canvas.clientHeight], pointer: [-1000, -1000], motion: [0, 0], hover: 0, time: 0 } },
     });
     await shader.compile({ colors: [output.format] });
     if (disposed) return;
 
     const section = canvas.parentElement!;
     let pointer: [number, number] = [-1000, -1000];
+    let targetPointer: [number, number] = [-1000, -1000];
     let motion: [number, number] = [0, 0];
     let targetMotion: [number, number] = [0, 0];
     let active = 0;
+    let hover = 0;
     const move = (event: PointerEvent) => {
       if (!event.isPrimary) return;
       const rect = section.getBoundingClientRect();
@@ -40,11 +42,13 @@ export function createAsciiRenderer(canvas: HTMLCanvasElement) {
       }
       if (active) {
         targetMotion = [
-          Math.max(-12, Math.min(12, targetMotion[0] + (next[0] - pointer[0]) * 0.5)),
-          Math.max(-12, Math.min(12, targetMotion[1] + (next[1] - pointer[1]) * 0.5)),
+          Math.max(-12, Math.min(12, targetMotion[0] + (next[0] - targetPointer[0]) * 0.4)),
+          Math.max(-12, Math.min(12, targetMotion[1] + (next[1] - targetPointer[1]) * 0.4)),
         ];
+      } else {
+        pointer = next;
       }
-      pointer = next;
+      targetPointer = next;
       active = 1;
     };
     const leave = () => { active = 0; };
@@ -61,11 +65,14 @@ export function createAsciiRenderer(canvas: HTMLCanvasElement) {
       unsubscribeResize();
     };
 
+    const time = clock(context);
     frameLoop(context, (frame) => {
-      motion = [motion[0] + (targetMotion[0] - motion[0]) * 0.22, motion[1] + (targetMotion[1] - motion[1]) * 0.22];
-      shader.set({ params: { pointer, motion, hover: active } });
+      pointer = [pointer[0] + (targetPointer[0] - pointer[0]) * 0.18, pointer[1] + (targetPointer[1] - pointer[1]) * 0.18];
+      hover += (active - hover) * 0.13;
+      motion = [motion[0] + (targetMotion[0] - motion[0]) * 0.17, motion[1] + (targetMotion[1] - motion[1]) * 0.17];
+      shader.set({ params: { pointer, motion, hover, time: time.time } });
       frame.pass(output, shader);
-      targetMotion = [targetMotion[0] * 0.86, targetMotion[1] * 0.86];
+      targetMotion = [targetMotion[0] * 0.9, targetMotion[1] * 0.9];
     }, { fps: 30 });
   })().catch((error: unknown) => {
     if (disposed) return;

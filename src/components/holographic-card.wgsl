@@ -66,7 +66,6 @@ fn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {
   let edge = roundedBox(p, vec2f(0.64, 0.91), 0.055);
   let silhouette = 1.0 - smoothstep(-aa, aa, edge);
 
-  let background = vec3f(8.0 / 255.0, 13.0 / 255.0, 27.0 / 255.0);
   let hover = clamp(params.hover, 0.0, 1.0);
   let lightCenter = params.pointer * vec2f(0.64, 0.91);
   let delta = p - lightCenter;
@@ -90,5 +89,5 @@ fn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {
 
   let rim = stroke(edge + 0.002, 0.0008, aa * 0.7);
   color = mix(color, vec3f(0.25, 0.49, 0.46) + pearl * light * 0.3, rim);
-  return vec4f(mix(background, color, silhouette), 1);
+  return vec4f(color * silhouette, silhouette);
 }

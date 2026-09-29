@@ -18,7 +18,11 @@ export function createRenderer(canvas: HTMLCanvasElement) {
     const context = await init();
     if (disposed) { context.dispose(); return; }
     gpu = context;
-    const output = surface(context, canvas, { dpr: [1, 2] });
+    const output = surface(context, canvas, {
+      dpr: [1, 2],
+      alphaMode: "premultiplied",
+      clearColor: [0, 0, 0, 0],
+    });
     const shader = effect(context, fragment, {
       label: "agent-ready-holographic-card",
       set: { params: { resolution: output.size, tilt: [0, 0], pointer: [0.2, -0.25], hover: 0 } },
