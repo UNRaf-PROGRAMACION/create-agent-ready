@@ -56,8 +56,8 @@ export function createAsciiFallback(canvas: HTMLCanvasElement, reducedMotion: bo
         const influence = Math.exp(-(distance * distance) / (230 * 230)) * hover;
         if (noise < 0.42 - influence * 0.3) continue;
         const radius = Math.hypot(x - centerX, (y - centerY) * 0.85);
-        const wave = Math.sin(x * 0.18 + Math.sin(y * 0.11 + seconds * 0.16) * 2.2) * 0.55
-          + Math.sin(radius * 0.24 - seconds * 0.28) * 0.45;
+        const wave = Math.sin(x * 0.18 + Math.sin(y * 0.11 + seconds * 0.34) * 2.2) * 0.55
+          + Math.sin(radius * 0.24 - seconds * 0.58) * 0.45;
         const ripple = Math.sin(distance / 30 - seconds * 2) * influence * 0.16;
         const phase = Math.max(0, Math.min(1, (wave + ripple + 0.6) / 1.3));
         const waveShape = phase * phase * (3 - 2 * phase);
@@ -67,8 +67,8 @@ export function createAsciiFallback(canvas: HTMLCanvasElement, reducedMotion: bo
         // Forward mapping mirrors the shader's inverse sampling near the pointer.
         const flowX = pointer.x + dx * (1 - 0.33 * influence) - dy * 0.065 * influence + motion.x * 1.4 * influence;
         const flowY = pointer.y + dy * (1 - 0.33 * influence) + dx * 0.065 * influence + motion.y * 1.4 * influence;
-        const driftX = (Math.sin(py * 0.012 + seconds * 0.45) + Math.sin(px * 0.009 - seconds * 0.25)) * 0.5;
-        const driftY = (Math.cos(px * 0.011 + seconds * 0.38) + Math.sin(py * 0.008 - seconds * 0.27)) * 0.5;
+        const driftX = (Math.sin(py * 0.012 + seconds * 0.82) + Math.sin(px * 0.009 - seconds * 0.47)) * (1.45 + hover * 0.4);
+        const driftY = (Math.cos(px * 0.011 + seconds * 0.72) + Math.sin(py * 0.008 - seconds * 0.5)) * (1.45 + hover * 0.4);
         context.fillStyle = `rgba(255, 179, 64, ${0.06 + shape * 0.13 + noise * 0.035 + influence * 0.16})`;
         context.fillRect(flowX + driftX - size / 2, flowY + driftY - size / 2, size, size);
       }

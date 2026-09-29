@@ -20,17 +20,17 @@ fn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {
   // cursor velocity bend the nearby squares into a flowing wake.
   let flow = vec2f(-delta.y, delta.x) * (0.065 * influence) + params.motion * (1.4 * influence);
   let drift = vec2f(
-    sin(position.y * 0.012 + params.time * 0.45) + sin(position.x * 0.009 - params.time * 0.25),
-    cos(position.x * 0.011 + params.time * 0.38) + sin(position.y * 0.008 - params.time * 0.27)
-  ) * 0.5;
+    sin(position.y * 0.012 + params.time * 0.82) + sin(position.x * 0.009 - params.time * 0.47),
+    cos(position.x * 0.011 + params.time * 0.72) + sin(position.y * 0.008 - params.time * 0.5)
+  ) * (1.45 + params.hover * 0.4);
   let displaced = position + delta * (0.5 * influence) - flow - drift;
   let cell = floor(displaced / 12.0);
   let local = displaced - cell * 12.0;
   let noise = hash(cell);
   let center = params.resolution / 12.0 * vec2f(0.6, 0.5);
   let radius = length((cell - center) * vec2f(1.0, 0.85));
-  let wave = sin(cell.x * 0.18 + sin(cell.y * 0.11 + params.time * 0.16) * 2.2) * 0.55
-    + sin(radius * 0.24 - params.time * 0.28) * 0.45;
+  let wave = sin(cell.x * 0.18 + sin(cell.y * 0.11 + params.time * 0.34) * 2.2) * 0.55
+    + sin(radius * 0.24 - params.time * 0.58) * 0.45;
   let ripple = sin(length(delta) / 30.0 - params.time * 2.0) * influence * 0.16;
   let waveShape = smoothstep(-0.6, 0.7, wave + ripple);
   let shape = mix(waveShape, 1.0, min(influence * 1.2, 0.78));
