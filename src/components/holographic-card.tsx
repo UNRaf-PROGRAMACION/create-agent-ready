@@ -37,7 +37,17 @@ export function HolographicCard() {
           <span>UNRAF / VIDEOJUEGOS</span><span>01</span>
         </div>
         <div className="flex flex-col items-center text-center">
-          <img src={`${import.meta.env.BASE_URL}logounraf.svg`} alt="" className="mb-6 w-[clamp(6rem,27vw,8rem)] drop-shadow-[0_0_16px_rgba(125,249,209,.35)]" />
+          <div className="holographic-logo mb-6 w-[clamp(6rem,27vw,8rem)]">
+            <img src={`${import.meta.env.BASE_URL}logounraf.svg`} alt="" className="block w-full" />
+            <span
+              aria-hidden="true"
+              className="holographic-logo-foil"
+              style={{
+                maskImage: `url(${import.meta.env.BASE_URL}logounraf.svg)`,
+                WebkitMaskImage: `url(${import.meta.env.BASE_URL}logounraf.svg)`,
+              }}
+            />
+          </div>
           <p className="font-display text-[clamp(1.5rem,6vw,2.3rem)] font-black leading-none tracking-[-.05em] text-white">AGENT<br /><span className="text-mint">READY</span></p>
           <p className="mt-3 text-[9px] font-semibold uppercase tracking-[.13em] text-slate-300 sm:text-[10px]">Vos decidís.</p>
         </div>

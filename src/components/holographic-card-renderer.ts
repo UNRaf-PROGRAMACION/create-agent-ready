@@ -38,6 +38,8 @@ export function createRenderer(canvas: HTMLCanvasElement) {
       if (!event.isPrimary) return;
       const rect = canvas.getBoundingClientRect();
       const scale = Math.min(rect.height, rect.width * 1.35);
+      canvas.parentElement?.style.setProperty("--shine-x", `${(event.clientX - rect.left) / rect.width * 100}%`);
+      canvas.parentElement?.style.setProperty("--shine-y", `${(event.clientY - rect.top) / rect.height * 100}%`);
       pointerX = (event.clientX - rect.left - rect.width / 2) / Math.max(1, scale) * 1.85 / 0.64;
       pointerY = (event.clientY - rect.top - rect.height / 2) / Math.max(1, scale) * 1.85 / 0.91;
       const dx = Math.max(0, Math.abs(pointerX) - 1);

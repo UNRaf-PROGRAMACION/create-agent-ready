@@ -29,8 +29,13 @@ button { font: inherit; }
 .copy-button:hover { background: rgba(125,249,209,.15); color: #fff; }
 .command-panel .copy-button { position: absolute; right: .8rem; bottom: .85rem; }
 .holographic-stage { position: relative; }
-.holographic-face { width: 86.5%; height: 98.4%; border: 1px solid rgba(125,249,209,.35); border-radius: 5%; background: linear-gradient(145deg, #14203d, #0b1729 65%, #112d32); }
+.holographic-face { width: 86.5%; height: 98.4%; overflow: hidden; border: 1px solid rgba(125,249,209,.35); border-radius: 5%; background: linear-gradient(145deg, #14203d, #0b1729 65%, #112d32); }
 .holographic-face-ready { border-color: transparent; background: transparent; box-shadow: none; }
+.holographic-face::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at var(--shine-x, 50%) var(--shine-y, 45%), rgba(125,249,209,.2), transparent 44%); opacity: 0; transition: opacity .35s; }
+.holographic-stage:hover .holographic-face::before { opacity: 1; }
+.holographic-logo { position: relative; aspect-ratio: 359 / 334; filter: drop-shadow(0 0 12px rgba(125,249,209,.25)); }
+.holographic-logo-foil { position: absolute; inset: 0; background: linear-gradient(110deg, #7df9d1 10%, #fff 38%, #ffbe5c 50%, #fff 62%, #7df9d1 90%); background-size: 230% 100%; background-position: 0 50%; mask-size: contain; mask-repeat: no-repeat; mask-position: center; -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; opacity: 0; transition: opacity .35s, background-position .75s ease; }
+.holographic-stage:hover .holographic-logo-foil { opacity: 1; background-position: 100% 50%; }
 .guide-card { display: flex; min-height: 19rem; flex-direction: column; border: 1px solid rgba(255,255,255,.1); border-radius: .75rem; background: rgba(255,255,255,.025); padding: 1.5rem; text-decoration: none; transition: transform .2s, border-color .2s, background .2s; }
 .guide-card:hover { transform: translateY(-4px); border-color: rgba(125,249,209,.55); background: rgba(125,249,209,.06); }
 .guide-layout { display: grid; gap: 3.5rem; grid-template-columns: minmax(0, 1fr); }
@@ -78,3 +83,4 @@ button { font: inherit; }
 .guide-prose th, .guide-prose td { min-width: 9rem; border: 1px solid rgba(255,255,255,.1); padding: .7rem .85rem; color: #c4cedf; line-height: 1.5; vertical-align: top; }
 @media (min-width: 1024px) { .guide-layout { grid-template-columns: 13rem minmax(0, 51rem); } .toc { display: block; position: sticky; top: 6.5rem; align-self: start; max-height: calc(100vh - 8rem); overflow-y: auto; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+@media (hover: none) { .holographic-stage:hover .holographic-face::before { opacity: 0; } .holographic-stage:hover .holographic-logo-foil { opacity: 0; } }
