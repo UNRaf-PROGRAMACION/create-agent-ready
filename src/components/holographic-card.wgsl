@@ -63,7 +63,7 @@ fn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {
   let hit = eye - ray * (dot(eye, normal) / dot(ray, normal));
   let p = vec2f(dot(hit, right), dot(hit, down));
   let aa = max(length(fwidth(p)), 0.0006);
-  let edge = roundedBox(p, vec2f(0.64, 0.91), 0.055);
+  let edge = roundedBox(p, vec2f(0.64, 0.91), 0.008);
   let silhouette = 1.0 - smoothstep(-aa, aa, edge);
 
   let hover = clamp(params.hover, 0.0, 1.0);

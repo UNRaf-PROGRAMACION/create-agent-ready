@@ -3,6 +3,7 @@ import { ArrowLeft, Compass } from "lucide-react";
 import { AppHeader } from "./components/app-header";
 import { GuideRenderer } from "./components/guide-renderer";
 import { LandingPage } from "./components/landing-page";
+import { SiteFooter } from "./components/site-footer";
 import { TableOfContents } from "./components/table-of-contents";
 import { findGuide } from "./content/guides";
 import { tableOfContents } from "./lib/markdown";
@@ -32,6 +33,7 @@ export default function App() {
         <main className="mx-auto grid min-h-[65vh] max-w-7xl place-items-center px-5 py-16 lg:px-8">
           <div className="max-w-lg text-center"><Compass className="mx-auto size-9 text-amber" /><p className="mt-6 text-xs font-bold tracking-[.18em] text-mint">RUTA NO ENCONTRADA</p><h1 className="mt-3 font-display text-4xl font-bold text-white">Esta guía no existe.</h1><a className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-mint hover:text-white" href="./"><ArrowLeft className="size-4" /> Volver al inicio</a></div>
         </main>
+        <SiteFooter />
       </>
     );
   }
@@ -48,7 +50,7 @@ export default function App() {
           </div>
         </main>
       ) : <LandingPage />}
-      <footer className="border-t border-white/10 px-5 py-8 text-center text-xs text-slate-500">Videojuegos UNRAF · Desarrollo guiado por agentes y SDD</footer>
+      <SiteFooter />
     </>
   );
 }

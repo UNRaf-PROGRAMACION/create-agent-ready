@@ -1,7 +1,8 @@
-import { ArrowRight, BookOpen, CheckCircle2, GitFork, ShieldCheck, Terminal } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, ShieldCheck, Terminal } from "lucide-react";
 import { guides, guideHref } from "../content/guides";
 import { AsciiBackground } from "./ascii-background";
 import { CopyCodeButton } from "./copy-code-button";
+import { GithubRepoLink } from "./github-repo-link";
 import { HolographicCard } from "./holographic-card";
 
 const command = "npx create-agent-ready-unraf . --level=sdd --dry-run";
@@ -12,7 +13,7 @@ export function LandingPage() {
       <section className="hero-grid relative overflow-hidden border-b border-white/10">
         <AsciiBackground />
         <div className="hero-fade absolute inset-0 pointer-events-none" aria-hidden="true" />
-        <div className="relative z-10 mx-auto grid min-h-[38rem] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-8">
+        <div className="relative z-10 mx-auto grid min-h-[calc(100svh-4rem)] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.15fr_.85fr] lg:px-8">
           <div className="relative z-10">
             <p className="eyebrow"><span /> Videojuegos UNRAF</p>
             <h1 className="mt-6 max-w-3xl font-display text-5xl font-black leading-[.96] tracking-[-.05em] text-white sm:text-7xl">
@@ -53,8 +54,8 @@ export function LandingPage() {
       </section>
       <section className="border-y border-white/10 bg-white/[.025]">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-5 py-10 sm:flex-row sm:items-center lg:px-8">
-          <div className="flex items-center gap-4"><span className="grid size-11 place-items-center rounded-full border border-mint/30 bg-mint/10 text-mint"><BookOpen className="size-5" /></span><p className="max-w-xl text-sm leading-6 text-slate-300">OpenCode es el ejemplo del workshop. El proceso es independiente del proveedor, modelo o motor de juegos.</p></div>
-          <a className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-mint" href="https://github.com/UNRaf-PROGRAMACION/create-agent-ready" target="_blank" rel="noreferrer"><GitFork className="size-4" /> Ver repositorio</a>
+          <div className="flex items-center gap-4"><span className="grid size-11 place-items-center rounded-xs border border-mint/30 bg-mint/10 text-mint"><BookOpen className="size-5" /></span><p className="max-w-xl text-sm leading-6 text-slate-300">OpenCode es el ejemplo del workshop. El proceso es independiente del proveedor, modelo o motor de juegos.</p></div>
+          <GithubRepoLink />
         </div>
       </section>
     </main>
