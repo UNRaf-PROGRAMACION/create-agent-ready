@@ -7,7 +7,7 @@ audiencia: Estudiantes de Videojuegos UNRAF y otras áreas de desarrollo
 # Desarrollo guiado por agentes
 
 > [!NOTE]
-> **En esta guía:** qué hace un agente, cómo usar SDD para acotar cambios y qué decisiones siguen siendo humanas.
+> **En esta guía:** qué hace un agente, en qué se diferencian vibe coding y SDD, y qué decisiones siguen siendo humanas.
 
 [Inicio](../README.md) | [Guía del workshop](02-guia-workshop.md) | [Referencia del CLI](03-referencia-cli.md)
 
@@ -29,8 +29,14 @@ Un agente puede leer archivos, buscar símbolos, proponer planes, editar código
 
 Por eso se trabaja en un ciclo corto y observable:
 
-```text
-GDD o intención -> spec -> plan -> cambio pequeño -> verificación -> evidencia -> decisión humana
+```workflow
+GDD o intención | Definí qué necesita la persona jugadora.
+Spec | Acotá el cambio y sus criterios de aceptación.
+Plan | Elegí una ruta técnica revisable.
+Cambio pequeño | Implementá una pieza por vez.
+Verificación | Comprobá el comportamiento esperado.
+Evidencia | Registrá resultados y limitaciones.
+Decisión humana | Aceptá, ajustá o volvé a planificar.
 ```
 
 El agente acelera trabajo bajo restricciones. Si la evidencia falla o aparece información nueva, se vuelve a la spec o al plan. La autoridad sobre el producto, el repositorio y la publicación sigue siendo humana.
@@ -63,9 +69,15 @@ El agente acelera trabajo bajo restricciones. Si la evidencia falla o aparece in
 | Trazabilidad | Vínculo entre intención, spec, plan, cambio y evidencia. |
 | Gate humano | Punto de decisión donde una persona aprueba, ajusta o detiene el trabajo. |
 
+## 🎨 ¿Qué es vibe coding?
+
+**Vibe coding** es el nombre que [Andrej Karpathy](https://karpathy.ai/) dio en 2025 a una forma de programar asistida por IA: la persona expresa su intención en lenguaje natural y deja que las herramientas generen código. En vez de escribir cada línea, orienta el trabajo, prueba el resultado y ajusta sus instrucciones. Puede servir para explorar ideas y crear prototipos rápidos.
+
+Cuando una petición informal como «Hacé un endpoint que...» se usa para un cambio que debe mantenerse, quedan decisiones técnicas sin explicitar. El agente puede asumir requisitos, ampliar el alcance o generar código difícil de revisar y refactorizar. La persona sigue siendo responsable de comprender y validar el resultado.
+
 ## 📐 SDD: definir antes de implementar
 
-Spec-Driven Development comienza por hacer explícito el cambio deseado antes de pedir implementación. En este curso, se usa como una práctica de especificación y trazabilidad, no como una metodología universal ni como sustituto de Agile, diseño, CI o seguridad. Una spec útil responde:
+Spec-Driven Development (desarrollo guiado por especificaciones) comienza por hacer explícito el cambio deseado antes de pedir implementación. Su regla práctica es: **antes de escribir código, definir una spec que el agente pueda leer, revisar y descomponer en tareas**. En este curso, se usa como una práctica de especificación y trazabilidad, no como una metodología universal ni como sustituto de Agile, diseño, CI o seguridad. Una spec útil responde:
 
 1. Qué problema o valor de jugador resuelve.
 2. Qué queda dentro del alcance.
@@ -76,9 +88,23 @@ Spec-Driven Development comienza por hacer explícito el cambio deseado antes de
 
 La spec no es un documento largo ni una promesa de que el agente ya entendió todo. Es un contrato revisable para orientar un cambio pequeño.
 
+Un recorrido posible es **ticket o intención → spec → plan → código → revisión y evidencia**. Cada etapa deja un artefacto legible para personas y agentes. El plan acota las decisiones del agente, pero no elimina las ambigüedades: si encuentra información nueva, debe explicitarla y revisar el plan antes de continuar. Conservar sólo el contexto relevante en cada etapa ayuda a no saturar la ventana de contexto; tampoco evita por sí solo los errores.
+
 En videojuegos, el GDD conserva la visión general: fantasía del jugador, pilares, bucle, mecánicas y tono. La spec define una pieza implementable. El plan explica cómo realizarla en el repositorio real. Un GDD no debe convertirse automáticamente en código ni en specs numeradas.
 
 Cada criterio de aceptación debe tener una forma de verificación y una evidencia asociada. Esa relación permite rastrear qué intención se implementó, qué se comprobó y qué quedó pendiente.
+
+### Vibe coding y SDD: comparación
+
+| Aspecto | Vibe coding | SDD (Spec-Driven Development) |
+| --- | --- | --- |
+| Punto de partida | Instrucción informal: «Hacé una vista que...». | Intención convertida en una spec con alcance y criterios verificables. |
+| Autonomía de la IA | El agente debe inferir decisiones no expresadas. | El agente trabaja con un plan revisable y comunica las decisiones pendientes. |
+| Artefactos generados | A menudo se prioriza el código resultante. | Ticket o intención, spec, plan, código y evidencia de revisión. |
+| Resultado inicial | Depende de la tarea y de la revisión; el código puede requerir refactorización. | Descomponer tareas facilita verificar resultados, pero no garantiza éxito. |
+| Manejo del contexto | Un pedido largo y abierto puede saturar la ventana de contexto. | Los artefactos de cada etapa mantienen el contexto enfocado y recuperable. |
+
+La comparación a veces se presenta como «30% sale bien a la primera y 70% requiere refactorización» para el vibe coding. **Esas cifras no son una tasa general comprobada**: sin datos, definición de éxito y tipo de proyecto no permiten predecir el resultado de una tarea. La diferencia útil es qué decisiones y evidencias quedan visibles para revisar.
 
 ### Ejemplo: vidas y derrota
 
@@ -161,6 +187,7 @@ Panorama revisado el 2026-09-17. Estas referencias describen herramientas y conc
 - [Agent Development Kit: conceptos centrales](https://adk.dev/get-started/about/)
 - [AutoSkills](https://github.com/midudev/autoskills)
 - [Anthropic Skill Creator](https://www.skills.sh/anthropics/skills/skill-creator)
+- [Andrej Karpathy: From Vibe Coding to Agentic Engineering (entrevista con Stephanie Zhan)](https://www.youtube.com/watch?v=96jN2OCOfLs): conversación sobre el paso de instrucciones informales a la ingeniería con agentes.
 
 ## 🎓 Uso académico responsable
 

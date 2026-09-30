@@ -6,6 +6,17 @@ import type { Guide } from "../content/guides";
 import { guideHref } from "../content/guides";
 import { guideIdFromHref, nodeText, slugify } from "../lib/markdown";
 import { CopyCodeButton } from "./copy-code-button";
+import { WorkflowCards, type WorkflowStep } from "./workflow-cards";
+
+function externalLinkProps(href: string): { target?: string; rel?: string } {
+  if (!/^https?:\/\//i.test(href)) return {};
+  try {
+    if (new URL(href).host === window.location.host) return {};
+  } catch {
+    return {};
+  }
+  return { target: "_blank", rel: "noreferrer" };
+}
 
 export function GuideRenderer({ guide }: { guide: Guide }) {
   return (
@@ -19,10 +30,30 @@ export function GuideRenderer({ guide }: { guide: Guide }) {
           h3: ({ children }) => <h3 id={slugify(nodeText(children))}>{children}</h3>,
           a: ({ href = "", children, node: _node, ...props }) => {
             const id = guideIdFromHref(href);
-            return id ? <a href={guideHref(id)} {...props}>{children}</a> : <a href={href} {...props}>{children}</a>;
+            return id
+              ? <a href={guideHref(id)} {...props}>{children}</a>
+              : <a href={href} {...externalLinkProps(href)} {...props}>{children}</a>;
           },
+          img: ({ src = "", node: _node, ...props }) => (
+            <img
+              src={src.startsWith("../public/") ? `${import.meta.env.BASE_URL}${src.slice("../public/".length)}` : src}
+              className="mt-5 h-auto w-full max-w-md rounded-sm border border-white/10"
+              loading="lazy"
+              {...props}
+            />
+          ),
           blockquote: ({ children, node }) => <Blockquote node={node}>{children}</Blockquote>,
-          pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
+          pre: ({ children }) => {
+            if (isValidElement<{ className?: string }>(children) && children.props.className === "language-workflow") {
+              const lines = nodeText(children).trim().split(/\r?\n/);
+              const steps: WorkflowStep[] = lines.map((line) => {
+                const [title, detail] = line.split(" | ");
+                return { title, detail };
+              });
+              if (steps.every((step) => step.title && step.detail)) return <WorkflowCards steps={steps} />;
+            }
+            return <CodeBlock>{children}</CodeBlock>;
+          },
         }}
       >
         {guide.content}
@@ -49,7 +80,7 @@ function markdownText(node: unknown): string {
 }
 
 function alertTypeFromNode(node: unknown): AlertType | null {
-  const match = markdownText(node).match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i);
+  const match = markdownText(node).match(/^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i);
   return match?.[1].toUpperCase() as AlertType | undefined ?? null;
 }
 

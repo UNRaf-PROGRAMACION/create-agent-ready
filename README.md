@@ -18,9 +18,38 @@ El CLI no crea un juego, no modifica gameplay ni instala dependencias en el proy
 
 ## 🔁 El ciclo de trabajo
 
-```text
-contexto -> spec -> plan -> cambio pequeño -> verificación -> evidencia -> decisión humana
-```
+> **01 · Contexto / intención**<br>
+> Entendé el proyecto y definí qué querés lograr.
+
+↓
+
+> **02 · Spec**<br>
+> Acotá el cambio y sus criterios de aceptación.
+
+↓
+
+> **03 · Plan**<br>
+> Elegí una ruta técnica revisable.
+
+↓
+
+> **04 · Cambio pequeño**<br>
+> Implementá una pieza por vez.
+
+↓
+
+> **05 · Verificación**<br>
+> Comprobá el comportamiento esperado.
+
+↓
+
+> **06 · Evidencia**<br>
+> Registrá resultados y limitaciones.
+
+↓
+
+> **07 · Decisión humana**<br>
+> Aceptá, ajustá o volvé a planificar.
 
 El CLI prepara la estructura para sostener este ciclo. La persona sigue siendo responsable de revisar el repositorio, aprobar la spec, decidir el plan y evaluar el resultado.
 

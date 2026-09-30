@@ -13,16 +13,26 @@ audience: Estudiantes de Videojuegos UNRAF
 
 ## ✅ Antes de empezar
 
-### Necesitás
+### Requisitos
 
-- Node.js 18 o superior y Git instalados.
+- [Node.js 18 o superior](https://nodejs.org/es/download) y [Git](https://git-scm.com/downloads) instalados para usar el CLI de este proyecto.
 - Un proyecto existente creado con el motor o tecnología elegida.
 - Una idea de juego o GDD previo; se acepta cualquier formato.
 - La plantilla de GDD breve disponible como alternativa.
 
+Para usar [OpenCode](https://opencode.ai/v2/docs/) desde la terminal, necesitás un sistema compatible y acceso a un modelo. Node.js 18 o superior es un requisito del CLI de este proyecto, no de OpenCode.
+
+**¿Puede correr OpenCode?** 🥔 Sí.
+
+«Si puede abrir una terminal, probablemente pueda correr OpenCode».
+
+🥔 PC papa · ✅ Terminal
+
+![Una papa con cables y componentes de computadora: meme de la PC papa.](../public/potato.jpg)
+
 ### Durante el workshop
 
-La persona facilitadora instala OpenCode y configura modelos gratuitos siguiendo la [documentación vigente](https://opencode.ai/docs/). Es un paso externo al CLI: la herramienta es un ejemplo y el método sigue siendo aplicable a otros agentes.
+La persona facilitadora instala OpenCode y configura modelos gratuitos siguiendo la [documentación vigente](https://opencode.ai/v2/docs/). Es un paso externo al CLI: la herramienta es un ejemplo y el método sigue siendo aplicable a otros agentes.
 
 > [!IMPORTANT]
 > No se autoriza código hasta haber inspeccionado el repositorio y aprobado una spec con alcance acotado.
@@ -39,8 +49,13 @@ Presentar que una salida plausible no equivale a una verificación. El agente ay
 
 **Objetivo:** entender cómo una idea se transforma en un cambio verificable.
 
-```text
-GDD o idea -> spec -> plan -> cambio -> evidencia -> decisión humana
+```workflow
+GDD o idea | Identificá la experiencia que querés crear.
+Spec | Definí un cambio concreto y observable.
+Plan | Revisá cómo realizarlo en el proyecto.
+Cambio | Implementá sólo el alcance acordado.
+Evidencia | Verificá el resultado y registrá las limitaciones.
+Decisión humana | Aceptá el cambio o volvé a la spec y al plan.
 ```
 
 El GDD explica por qué existe el juego y qué experiencia busca. La spec acota un cambio concreto y observable.
