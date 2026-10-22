@@ -60,6 +60,17 @@ Decisión humana | Aceptá el cambio o volvé a la spec y al plan.
 
 El GDD explica por qué existe el juego y qué experiencia busca. La spec acota un cambio concreto y observable.
 
+### Crear el proyecto y elegir el motor
+
+Creá un proyecto en blanco con el motor que prefieras:
+
+- **Unity:** ideal para proyectos 2D/3D complejos, con un ecosistema robusto.
+- **Godot:** alternativa ligera y de código abierto para desarrollo ágil.
+- **Phaser:** recomendado para prototipado y ciclos de iteración rápida en entorno web.
+
+> [!TIP]
+> Recomendamos **Phaser** para experimentar durante el workshop.
+
 ### Preparar el proyecto
 
 **Objetivo:** instalar el harness sin sobrescribir archivos por sorpresa.
@@ -105,6 +116,10 @@ Pedir al agente que inspeccione el repositorio en modo lectura. Debe informar es
 **Resultado:** información comprobable para decidir el alcance de la primera spec.
 
 ## 🛠️ Jornada 2: alinear, especificar y verificar
+
+```workshop-flows
+Flujos (2).md
+```
 
 ### Relación entre GDD y specs
 

@@ -7,6 +7,7 @@ import { guideHref } from "../content/guides";
 import { guideIdFromHref, nodeText, slugify } from "../lib/markdown";
 import { CopyCodeButton } from "./copy-code-button";
 import { WorkflowCards, type WorkflowStep } from "./workflow-cards";
+import { WorkshopFlows } from "./workshop-flows";
 
 function externalLinkProps(href: string): { target?: string; rel?: string } {
   if (!/^https?:\/\//i.test(href)) return {};
@@ -22,7 +23,14 @@ export function GuideRenderer({ guide }: { guide: Guide }) {
   return (
     <article className="guide-prose">
       <div className="guide-kicker">{guide.eyebrow}</div>
-      <ReactMarkdown
+      <MarkdownContent content={guide.content} />
+    </article>
+  );
+}
+
+function MarkdownContent({ content }: { content: string }) {
+  return (
+    <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => <h1 id={slugify(nodeText(children))}>{children}</h1>,
@@ -44,6 +52,9 @@ export function GuideRenderer({ guide }: { guide: Guide }) {
           ),
           blockquote: ({ children, node }) => <Blockquote node={node}>{children}</Blockquote>,
           pre: ({ children }) => {
+            if (isValidElement<{ className?: string }>(children) && children.props.className === "language-workshop-flows") {
+              return <WorkshopFlows renderContent={(stepContent) => <MarkdownContent content={stepContent} />} />;
+            }
             if (isValidElement<{ className?: string }>(children) && children.props.className === "language-workflow") {
               const lines = nodeText(children).trim().split(/\r?\n/);
               const steps: WorkflowStep[] = lines.map((line) => {
@@ -56,9 +67,8 @@ export function GuideRenderer({ guide }: { guide: Guide }) {
           },
         }}
       >
-        {guide.content}
+        {content}
       </ReactMarkdown>
-    </article>
   );
 }
 
