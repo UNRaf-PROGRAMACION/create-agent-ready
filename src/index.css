@@ -95,6 +95,110 @@ button { font: inherit; }
 .workflow-title { color: #fff; font-weight: 800; line-height: 1.4; }
 .workflow-detail { margin-top: .2rem; color: #c4cedf; font-size: .875rem; line-height: 1.5; }
 .workflow-arrow { display: block; margin: .3rem auto; color: #7df9d1; }
+.workshop-flows { --flow-line: #47566d; margin: 2rem 0 3rem; padding: 1.75rem; border: 1px solid #253146; border-radius: 1.25rem; background: radial-gradient(ellipse at 50% 28%, #233d4d2e, transparent 45%), radial-gradient(#98b0cd0c 1px, transparent 1px), #0b1220; background-size: auto, 24px 24px, auto; box-shadow: 0 20px 60px #0002, inset 0 1px #ffffff05; }
+.flow-toolbar { display: flex; align-items: start; justify-content: space-between; gap: 1rem; padding-bottom: 2.75rem; }
+.flow-eyebrow { display: flex; align-items: center; gap: .5rem; font-size: .6rem; font-weight: 800; letter-spacing: .15em; color: #9cafc7; }
+.guide-prose .flow-intro h3 { margin: .8rem 0 .65rem; font-size: 1.9rem; font-weight: 750; letter-spacing: -.05em; line-height: 1.15; }
+.flow-intro h3 span { color: #a0b1c8; }
+.guide-prose .flow-intro p { max-width: 23rem; margin: 0; color: #a4b3c7; font-size: .78rem; line-height: 1.7; }
+.flow-view-button { display: inline-flex; justify-content: center; align-items: center; gap: .45rem; flex: none; min-height: 2.5rem; padding: .55rem .75rem; border: 1px solid #38475f; border-radius: .5rem; background: #142034; color: #e0e9f7; font-size: .7rem; font-weight: 600; cursor: pointer; transition: border-color .2s, background .2s; }
+.flow-view-button:hover { border-color: #8da9bf; background: #1b2b41; }
+.workshop-flows :is(button, summary, a):focus-visible { outline: 2px solid #7df9d1; outline-offset: 4px; }
+.flow-origin { display: flex; flex-direction: column; align-items: center; }
+.flow-start { display: flex; align-items: center; justify-content: center; gap: .65rem; width: 13.5rem; max-width: 100%; padding: 1rem; border: 1px solid #8296ae; border-radius: 50%; background: linear-gradient(180deg, #23364b, #172536); color: #f0f6ff; font-size: .9rem; font-weight: 650; box-shadow: 0 0 30px #93c8e20c, inset 0 1px #ffffff13; }
+.flow-start svg { color: #b6dace; fill: #7df9d115; }
+.flow-stem { display: flex; justify-content: center; align-items: flex-end; width: 1px; height: 2.25rem; background: var(--flow-line); color: #8fa3bb; }
+.flow-stem svg { flex: none; margin-bottom: -3px; }
+.flow-decision { display: grid; place-items: center; width: 7rem; height: 7rem; margin: 1.5rem 0; border: 1px solid #9fb2c8; border-radius: .6rem; transform: rotate(45deg); background: linear-gradient(135deg, #2b4059, #18263b); box-shadow: 0 0 38px #93bdd00d, inset 0 0 20px #b6d9ff05; }
+.flow-decision > span { transform: rotate(-45deg); text-align: center; color: #bac8db; font-size: .85rem; line-height: 1.6; }
+.flow-decision strong { font-size: 1.15rem; }
+.flow-fork { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; padding-top: 1.5rem; }
+.flow-fork::before { content: ""; position: absolute; top: 0; left: calc(25% - .375rem); right: calc(25% - .375rem); height: 100%; border: 1px solid var(--flow-line); border-bottom: 0; border-radius: 1rem 1rem 0 0; pointer-events: none; }
+.flow-fork::after { content: ""; position: absolute; height: 2rem; width: 1px; top: -2rem; left: calc(50% - .5px); background: var(--flow-line); }
+.workshop-flows .flow-route { position: relative; display: flex; align-items: center; flex-direction: column; gap: .3rem; text-decoration: none; font-size: .72rem; text-align: center; padding-bottom: .65rem; color: #9be6cc; }
+.flow-route span { padding: .12rem .65rem; border: 1px solid #457968; border-radius: 2rem; background: #0b1220; font-weight: 800; font-size: .65rem; box-shadow: 0 0 0 5px #0b1220; transition: background .2s; }
+.flow-route:hover span { background: #203c35; }
+.flow-route-b span { border-color: #846b44; }
+.flow-route-b:hover span { background: #382d20; }
+.flow-route > svg { background: #0b1220; }
+.workshop-flows .flow-route-b { color: #ffbe5c; }
+.flow-branches { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.flow-mobile-switch { display: none; }
+.flow-branch { --branch: #7df9d1; --branch-rgb: 125,249,209; min-width: 0; }
+.flow-branch-b { --branch: #ffbe5c; --branch-rgb: 255,190,92; }
+.flow-branch-heading { position: relative; display: flex; align-items: start; gap: .8rem; min-height: 7rem; padding: 1.15rem 1rem; border: 1px solid rgba(var(--branch-rgb), .22); border-radius: .8rem; background: linear-gradient(120deg, rgba(var(--branch-rgb), .08), #111d2b); box-shadow: inset 0 1px rgba(var(--branch-rgb), .08); }
+.flow-letter { display: grid; place-items: center; flex: none; width: 2.1rem; height: 2.1rem; border: 1px solid rgba(var(--branch-rgb), .4); border-radius: .6rem; background: rgba(var(--branch-rgb), .12); color: var(--branch); font-size: 1.05rem; font-weight: 800; }
+.flow-branch-count { display: block; margin: .05rem 0 .4rem; color: var(--branch); font-size: .625rem; font-weight: 750; letter-spacing: .08em; }
+.flow-branch-count > span { color: #a7b7c9; font-weight: 500; letter-spacing: 0; }
+.guide-prose .flow-branch h3 { margin: 0; font-size: .95rem; line-height: 1.45; font-weight: 650; letter-spacing: -.015em; }
+.guide-prose .flow-nodes { margin: 0; padding: 1.75rem 0 0; list-style: none; position: relative; }
+.flow-nodes::before { content: ""; position: absolute; top: 0; left: 50%; height: 1.75rem; width: 1px; background: rgba(var(--branch-rgb), .4); }
+.guide-prose .flow-node { padding: 0; }
+.flow-node-card { position: relative; min-width: 0; border: 1px solid #2a374b; border-radius: .75rem; background: linear-gradient(110deg, #172235, #121d2e); box-shadow: 0 5px 15px #0001; transition: border-color .2s, box-shadow .2s; }
+.flow-node-card:hover, .flow-node-card[open] { border-color: rgba(var(--branch-rgb), .5); box-shadow: 0 6px 24px #0002; }
+.flow-node-terminal { background: linear-gradient(110deg, #142132, #0e1929); }
+.flow-node-prompt { border-radius: .75rem .75rem .75rem .15rem; }
+.flow-node-manual { border-style: dashed; background: #121c2b; }
+.flow-node-card summary { position: relative; display: flex; align-items: center; gap: .75rem; min-height: 6rem; list-style: none; padding: 1rem .8rem 1rem 1rem; cursor: pointer; border-radius: inherit; }
+.flow-node-card summary::-webkit-details-marker { display: none; }
+.flow-step-number { flex: none; display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border: 1px solid #405068; border-radius: 50%; background: #0e1929; color: #b3c3d7; font: 600 .7rem "SFMono-Regular", Consolas, monospace; transition: color .2s, border-color .2s; }
+.flow-node-card:hover .flow-step-number, .flow-node-card[open] .flow-step-number { color: var(--branch); border-color: rgba(var(--branch-rgb), .45); }
+.flow-node-label { flex: 1; min-width: 0; }
+.flow-node-meta { display: flex; align-items: center; gap: .35rem; color: #a8b9ce; font-size: .6rem; font-weight: 700; letter-spacing: .1em; line-height: 1.5; }
+.flow-node-meta svg { color: var(--branch); }
+.flow-node-title { display: block; margin-top: .3rem; color: #e9f0fa; font-size: .85rem; font-weight: 600; line-height: 1.5; }
+.flow-node-action { flex: none; display: grid; place-items: center; width: 1.55rem; height: 1.55rem; border-radius: .4rem; background: #ffffff04; color: #a9bcd2; transition: background .2s, color .2s; }
+.flow-node-card:hover .flow-node-action, .flow-node-card[open] .flow-node-action { color: var(--branch); background: rgba(var(--branch-rgb), .09); }
+.flow-node-content { padding: 1rem; border-top: 1px solid #ffffff0b; }
+.flow-content-label { display: flex; align-items: center; gap: .5rem; margin-bottom: .8rem; color: #a7bacf; font-size: .65rem; font-weight: 600; }
+.flow-content-label > span { color: var(--branch); font-family: Consolas, monospace; }
+.guide-prose .flow-node-content p, .guide-prose .flow-node-content li { color: #b9c8da; font-size: .82rem; line-height: 1.8; }
+.flow-node-content > p:first-of-type { margin-top: 0; }
+.flow-node-content ul { padding-left: 1rem; list-style: disc; }
+.flow-node-content li::marker { color: var(--branch); }
+.flow-node-content .code-block { margin: 1rem -.25rem; border: 1px solid #2a394e; border-radius: .55rem; background: #080f1b; }
+.flow-node-content .code-block::before { content: "COMANDO"; position: absolute; top: .95rem; left: .85rem; color: #899fb9; font: 600 .6rem Consolas, monospace; letter-spacing: .1em; }
+.flow-node-terminal .code-block::before { content: "TERMINAL"; }
+.flow-node-prompt .code-block::before { content: "PROMPT"; color: var(--branch); }
+.flow-node-prompt .code-block { border-left: 2px solid rgba(var(--branch-rgb), .55); background: linear-gradient(135deg, rgba(var(--branch-rgb), .035), #080f1b); }
+.flow-node-content pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .78rem; line-height: 1.8; padding: 3.4rem .85rem 1rem; color: #dbe8f7; }
+.flow-node-content .copy-button { min-height: 2rem; border: 1px solid #42556b; border-radius: .35rem; background: #1e3045; color: #ebf3ff; font-size: .65rem; }
+.flow-node-content .copy-button:hover { background: #2d435a; border-color: #93aebe; }
+.copy-button[data-state="copied"] { border-color: #7df9d180; background: #7df9d119; color: #aaffdf; }
+.copy-button[data-state="error"] { border-color: #ffbe5c80; color: #ffce83; }
+.flow-node-content > :last-child { margin-bottom: 0; }
+.flow-connector { display: flex; justify-content: center; align-items: flex-end; width: 1px; height: 2rem; margin: 0 auto; background: rgba(var(--branch-rgb), .4); color: var(--branch); }
+.flow-connector svg { flex: none; margin-bottom: -2px; }
+.flow-end { position: relative; display: flex; align-items: center; justify-content: center; gap: .4rem; width: fit-content; margin: 1.5rem auto 0; padding: .4rem .75rem; border: 1px solid rgba(var(--branch-rgb), .25); border-radius: 2rem; background: rgba(var(--branch-rgb), .04); color: #b5c8d6; font-size: .6rem; }
+.flow-end::before { content: ""; position: absolute; top: -1.5rem; left: 50%; width: 1px; height: 1.5rem; background: rgba(var(--branch-rgb), .4); }
+.flow-end svg { color: var(--branch); }
+.flow-source { display: flex; align-items: center; justify-content: center; gap: .45rem; margin-top: 2rem; padding-top: 1.15rem; border-top: 1px solid #263449; color: #98aac1; font-size: .6rem; line-height: 1.7; }
+.flow-source svg { flex: none; }
+@supports (interpolate-size: allow-keywords) {
+  .flow-node-card { interpolate-size: allow-keywords; }
+  .flow-node-card::details-content { height: 0; opacity: 0; overflow: clip; transition: height .22s ease, opacity .22s ease, content-visibility .22s allow-discrete; }
+  .flow-node-card[open]::details-content { height: auto; opacity: 1; }
+}
+@media (max-width: 639px) {
+  .workshop-flows { padding: 1.25rem .8rem; border-radius: 1rem; }
+  .flow-toolbar { flex-direction: column; gap: 1rem; padding: 0 .2rem 2rem; }
+  .guide-prose .flow-intro h3 { font-size: 1.7rem; }
+  .flow-view-button { min-height: 2.75rem; }
+  .flow-branches { grid-template-columns: minmax(0, 1fr); }
+  .flow-branch[data-active="false"] { display: none; }
+  .flow-fork { gap: .5rem; }
+  .flow-fork::before { left: calc(25% - .125rem); right: calc(25% - .125rem); height: 1.5rem; }
+  .flow-mobile-switch { display: flex; gap: .35rem; margin: .75rem 0 1rem; padding: .3rem; border: 1px solid #2b394e; border-radius: .7rem; background: #080f1b; }
+  .flow-mobile-switch button { flex: 1; display: flex; justify-content: center; align-items: center; gap: .5rem; min-height: 2.75rem; padding: .5rem .35rem; border: 1px solid transparent; border-radius: .45rem; background: transparent; color: #adbed3; font-size: .72rem; font-weight: 600; cursor: pointer; }
+  .flow-mobile-switch button span { font-size: .65rem; }
+  .flow-mobile-switch button[aria-pressed="true"] { border-color: #7df9d140; background: #7df9d112; color: #a3f3d9; }
+  .flow-mobile-switch button:last-child[aria-pressed="true"] { border-color: #ffbe5c40; background: #ffbe5c12; color: #ffd18d; }
+  .flow-branch-heading { min-height: auto; padding: 1rem .8rem; }
+  .flow-node-card summary { min-height: 5.5rem; gap: .6rem; padding-left: .75rem; }
+  .flow-node-content .copy-button { min-height: 2.75rem; }
+  .flow-node-content pre { padding-top: 4rem; }
+  .flow-source { justify-content: start; }
+}
 .guide-prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.6rem 0; font-size: .9rem; }
 .guide-prose th { color: #fff; background: rgba(255,255,255,.07); text-align: left; }
 .guide-prose th, .guide-prose td { min-width: 9rem; border: 1px solid rgba(255,255,255,.1); padding: .7rem .85rem; color: #c4cedf; line-height: 1.5; vertical-align: top; }

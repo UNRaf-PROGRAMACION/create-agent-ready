@@ -32,6 +32,29 @@ jobs:
         run: npm ci
       - name: Build site
         run: npm run build
+      - name: Checkout workshop presentation
+        uses: actions/checkout@v4
+        with:
+          repository: UNRaf-PROGRAMACION/workshop-agentes-unraf
+          ref: main
+          path: workshop-source
+          persist-credentials: false
+      - name: Record workshop version
+        working-directory: workshop-source
+        run: |
+          echo "### Presentación del workshop" >> "$GITHUB_STEP_SUMMARY"
+          echo "Commit: $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+      - name: Install workshop dependencies
+        working-directory: workshop-source
+        run: npm ci
+      - name: Build workshop presentation
+        working-directory: workshop-source
+        run: npm run build
+      - name: Include presentation in site
+        run: |
+          test -f workshop-source/dist/index.html
+          mkdir -p dist/presentacion
+          cp -a workshop-source/dist/. dist/presentacion/
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
