@@ -15,7 +15,7 @@ type AppHeaderProps = { activeGuide?: GuideId };
 
 function GuideLinks({ activeGuide }: AppHeaderProps) {
   return (
-    <nav aria-label="Guías" className="flex flex-col gap-2 lg:flex-row lg:items-center">
+    <nav aria-label="Guías y presentación" className="flex flex-col gap-2 lg:flex-row lg:items-center">
       {guides.map((guide) => (
         <a
           className={`rounded-xs border px-3 py-2 text-sm font-semibold transition duration-200 motion-safe:hover:-translate-y-0.5 hover:border-mint/70 hover:bg-mint/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint ${activeGuide === guide.id ? "border-mint/50 bg-mint/10 text-mint" : "border-white/15 bg-white/5 text-slate-200 hover:text-white"}`}
@@ -25,6 +25,12 @@ function GuideLinks({ activeGuide }: AppHeaderProps) {
           {guide.eyebrow}
         </a>
       ))}
+      <a
+        className="rounded-xs border border-mint/50 bg-mint/10 px-3 py-2 text-sm font-semibold text-mint transition duration-200 motion-safe:hover:-translate-y-0.5 hover:border-mint/70 hover:bg-mint/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint"
+        href={`${import.meta.env.BASE_URL}presentacion/`}
+      >
+        Presentación
+      </a>
     </nav>
   );
 }

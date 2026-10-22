@@ -175,6 +175,20 @@ npm run pack:check
 
 `npm run check` valida el CLI, sus pruebas y el build de documentación. `npm run pack:check` confirma qué archivos entrarán al paquete publicado en npm.
 
+### Sincronizar la presentación del workshop
+
+El botón **Presentación** del sitio abre [las diapositivas](https://unraf-programacion.github.io/create-agent-ready/presentacion/). Su fuente se mantiene únicamente en [workshop-agentes-unraf](https://github.com/UNRaf-PROGRAMACION/workshop-agentes-unraf).
+
+Para actualizar la versión publicada:
+
+1. Subí los cambios de la presentación a `main` en el repositorio del workshop.
+2. En este repositorio, abrí **Actions → Deploy GitHub Pages → Run workflow** y seleccioná `main`.
+3. Esperá que finalice la publicación. El resumen de la ejecución indica el commit del workshop utilizado.
+
+Cada publicación del sitio (manual o por un push a `main`) descarga y compila la versión de `main` del workshop y la incluye en `dist/presentacion/`. Si esa compilación falla, no se publica el nuevo sitio y se conserva la versión anterior. No se necesitan secretos adicionales mientras el workshop sea público.
+
+La presentación se incorpora durante la acción de GitHub; `npm run dev` y el build local de este repositorio no la descargan ni la compilan.
+
 ## 🤝 Proyecto
 
 - [Cómo contribuir](CONTRIBUTING.md)
